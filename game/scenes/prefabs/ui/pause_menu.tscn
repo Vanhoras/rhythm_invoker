@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbdki1u7d7qis"]
+
+[ext_resource type="Script" path="res://game/scripts/ui/PauseMenu.cs" id="1_3emkb"]
+[ext_resource type="PackedScene" uid="uid://cd4k7gwpjkgc1" path="res://game/scenes/prefabs/ui/volume_slider.tscn" id="1_r2g0g"]
+[ext_resource type="PackedScene" uid="uid://c6rwd334u172y" path="res://game/scenes/prefabs/ui/difficulty_settings.tscn" id="2_ssm7d"]
+[ext_resource type="PackedScene" uid="uid://ecgtanpgqqt4" path="res://game/scenes/prefabs/ui/input_assigner.tscn" id="3_cyroy"]
+
+[node name="PauseMenu2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_3emkb")
+
+[node name="PausePanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -239.0
+offset_right = 234.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="PauseMarginContainer" type="MarginContainer" parent="PausePanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="PauseContainer" type="VBoxContainer" parent="PausePanelContainer/PauseMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PausePanelContainer/PauseMarginContainer/PauseContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[center]PAUSED"
+fit_content = true
+scroll_active = false
+
+[node name="SettingsContainer" type="HBoxContainer" parent="PausePanelContainer/PauseMarginContainer/PauseContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="labels" type="VBoxContainer" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="VolumeLabel" type="RichTextLabel" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer/labels"]
+layout_mode = 2
+bbcode_enabled = true
+text = "VOLUME"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ControlLabel" type="RichTextLabel" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer/labels"]
+layout_mode = 2
+bbcode_enabled = true
+text = "BUTTON"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="DifficultyLabel" type="RichTextLabel" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer/labels"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "DIFFICULTY"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="settings" type="VBoxContainer" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="VolumeSlider" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer/settings" instance=ExtResource("1_r2g0g")]
+layout_mode = 2
+
+[node name="InputAssigner" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer/settings" instance=ExtResource("3_cyroy")]
+layout_mode = 2
+
+[node name="difficulty_settings" parent="PausePanelContainer/PauseMarginContainer/PauseContainer/SettingsContainer/settings" instance=ExtResource("2_ssm7d")]
+visible = false
+layout_mode = 2
