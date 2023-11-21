@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://44mheygcl77x"]
+
+[ext_resource type="Script" path="res://game/scripts/rhythm/Conductor.cs" id="1_5etsn"]
+
+[node name="conductor" type="AudioStreamPlayer"]
+script = ExtResource("1_5etsn")

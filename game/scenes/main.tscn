@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://r3abkbclv24u"]
+[gd_scene load_steps=4 format=3 uid="uid://r3abkbclv24u"]
 
 [ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/prefabs/ui/pause_menu.tscn" id="1_x5x2b"]
+[ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="2_3x6on"]
+[ext_resource type="Resource" uid="uid://c163lluc7qonj" path="res://game/assets/audio/Song.tres" id="3_a3tsq"]
 
 [node name="main" type="Node2D"]
 
@@ -8,3 +10,7 @@
 
 [node name="PauseMenu2" parent="CanvasLayer" instance=ExtResource("1_x5x2b")]
 process_mode = 3
+visible = false
+
+[node name="conductor" parent="." instance=ExtResource("2_3x6on")]
+_song = ExtResource("3_a3tsq")
