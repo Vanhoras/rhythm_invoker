@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c163lluc7qonj"]
 
-[ext_resource type="AudioStream" uid="uid://cknmdyoi28lq3" path="res://game/assets/audio/Shaara_3.wav" id="1_al82p"]
+[ext_resource type="AudioStream" path="res://game/assets/audio/Metronome 120 BPM - QuickSounds.com.mp3" id="1_f2lvp"]
 [ext_resource type="Script" path="res://game/scripts/rhythm/Song.cs" id="1_lbboo"]
 
 [resource]
 script = ExtResource("1_lbboo")
-_audioStream = ExtResource("1_al82p")
+_audioStream = ExtResource("1_f2lvp")
 _bpm = 120
 _beatPerMeasure = 4
-_beatsBeforeStart = 4
+_beatsBeforeStart = 8

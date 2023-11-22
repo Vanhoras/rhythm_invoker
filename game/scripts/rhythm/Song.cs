@@ -17,7 +17,7 @@ public partial class Song : Resource
 
 	public double SPB { 
 		get { 
-			return 60 / _bpm;
+			return 60 / (double)_bpm;
         } 
 	}
 

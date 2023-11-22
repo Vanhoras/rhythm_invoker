@@ -4,10 +4,10 @@ using System;
 public partial class Conductor : AudioStreamPlayer
 {
 	[Signal]
-    public delegate void OnBeatEventHandler(int currentMeasure, int currentBeat);
+    public delegate void OnBeatEventHandler(Conductor conductor);
 
     [Signal]
-    public delegate void OnMeasureEventHandler(int currentMeasure);
+    public delegate void OnMeasureEventHandler(Conductor conductor);
 
     [Export]
 	private Song _song;
@@ -15,12 +15,7 @@ public partial class Conductor : AudioStreamPlayer
 	public Song Song {  
 		get { return _song; } 
 		set { 
-			_song = value;
-            _currentMeasure = 0;
-			_currentBeat = 1;
-            _songPosition = 0;
-            Stream = Song.AudioStream;
-			Play();
+			PlaySong(value);
 		}
 	}
 
@@ -30,26 +25,97 @@ public partial class Conductor : AudioStreamPlayer
 
 	public int CurrentMeasure { get { return _currentMeasure; } }
 	public int CurrentBeat { get { return _currentBeat; } }
+    public int CurrentBeatTotal { get { return _currentBeatTotal; } }
 
-	private double _songPosition;
+    private double _songPosition;
 
-	public override void _Ready()
+	private bool _timerBeforePlaying;
+	private double _timer;
+
+    private bool _playing;
+    public new bool Playing { get { return _playing || _timerBeforePlaying; } }
+
+    public override void _Ready()
 	{
 		base._Ready();
-        Stream = Song.AudioStream;
-        Play();
+        PlaySong(Song);
+
+        this.Finished += SongFinished;
     }
 
-	public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
-        CalculateSongPosition();
+        if (_timerBeforePlaying)
+        {
+            _timer += delta;
 
-		int positionInBeats = (int)Math.Floor(_songPosition / Song.SPB);
-		
-		if (positionInBeats > _currentBeatTotal)
+            if (_currentBeatTotal < Song.BeatsBeforeStart -1)
+            {
+                
+                int positionInBeats = (int)Math.Floor(_timer / Song.SPB);
+
+                if (positionInBeats > _currentBeatTotal)
+                {
+                    OnBeatHandler();
+                }
+            } else
+            {
+                if (_timer >= (Song.BeatsBeforeStart * Song.SPB) - (AudioServer.GetTimeToNextMix() + AudioServer.GetOutputLatency()))
+                {
+                    _timerBeforePlaying = false;
+                    _timer = 0;
+                    _playing = true;
+                    Play();
+                }
+            }
+
+        } else if (_playing)
 		{
-			OnBeatHandler();
-		}
+            CalculateSongPosition();
+
+            int positionInBeats = (int)Math.Floor(_songPosition / Song.SPB);
+
+            if (positionInBeats > _currentBeatTotal - Song.BeatsBeforeStart)
+            {
+                OnBeatHandler();
+            }
+        }
+    }
+
+	public void PlaySong(Song song)
+	{
+        
+        _song = song;
+        Stream = Song.AudioStream;
+
+        StopSong();
+        
+        if (Song.BeatsBeforeStart > 0)
+        {
+            _timerBeforePlaying = true;
+            
+        } else
+        {
+            Play();
+            _playing = true;
+        }
+    }
+
+    public void StopSong()
+    {
+        Stop();
+        _playing = false;
+        _currentMeasure = 0;
+        _currentBeat = 1;
+        _currentBeatTotal = 0;
+        _songPosition = 0;
+        _timer = 0;
+    }
+
+    private void SongFinished()
+    {
+        StopSong();
+        GD.Print("Finished");
     }
 
 	private void OnBeatHandler()
@@ -62,10 +128,11 @@ public partial class Conductor : AudioStreamPlayer
 		{
 			_currentBeat = 1;
 			_currentMeasure++;
-			EmitSignal(SignalName.OnMeasure, _currentMeasure);
+			EmitSignal(SignalName.OnMeasure, this);
 		}
 
-		EmitSignal(SignalName.OnBeat, _currentMeasure, _currentBeat);
+		EmitSignal(SignalName.OnBeat, this);
+        GD.Print($"Beat _currentBeatTotal {_currentBeatTotal} ");
     }
 
 	private double CalculateSongPosition()
