@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://r3abkbclv24u"]
+
+[ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/scenes/main_menu.tscn" id="1_x5x2b"]
+
+[node name="main" type="Node2D"]
+
+[node name="InputCalibrationManager" type="Node" parent="."]
+
+[node name="ScoreManager" type="Node" parent="."]
+
+[node name="MainMenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="MainMenuCanvas" node_paths=PackedStringArray("mainNode") instance=ExtResource("1_x5x2b")]
+process_mode = 3
+mainNode = NodePath("../..")

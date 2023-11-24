@@ -1,0 +1,46 @@
+[gd_scene load_steps=12 format=3 uid="uid://db0syxrp16nu6"]
+
+[ext_resource type="Script" path="res://game/scripts/Level.cs" id="1_q4mox"]
+[ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="1_vnpu0"]
+[ext_resource type="Resource" uid="uid://c163lluc7qonj" path="res://game/assets/audio/Song.tres" id="2_gtybg"]
+[ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/scenes/main_menu.tscn" id="2_p34te"]
+[ext_resource type="PackedScene" uid="uid://p27fhtm5cx4i" path="res://game/scenes/prefabs/sprites/sky.tscn" id="3_hfi6w"]
+[ext_resource type="PackedScene" uid="uid://ca7fka7qq8hsy" path="res://game/scenes/prefabs/sprites/death.tscn" id="4_mkg74"]
+[ext_resource type="PackedScene" uid="uid://b2aol0wuh50lr" path="res://game/scenes/prefabs/sprites/ground.tscn" id="5_oqscq"]
+[ext_resource type="PackedScene" uid="uid://cir6gup4is3fd" path="res://game/scenes/prefabs/gameplay/dancer.tscn" id="6_ghgwu"]
+[ext_resource type="PackedScene" uid="uid://d1f0v65vgkrqg" path="res://game/scenes/prefabs/gameplay/fireball_1.tscn" id="7_qxgk0"]
+[ext_resource type="PackedScene" uid="uid://omf28mlqlnkf" path="res://game/scenes/prefabs/gameplay/fireball_2.tscn" id="8_ikgm8"]
+[ext_resource type="PackedScene" uid="uid://bm4kv78qclcua" path="res://game/scenes/prefabs/gameplay/circle.tscn" id="9_hgr8o"]
+
+[node name="game" type="Node2D" node_paths=PackedStringArray("conductor")]
+script = ExtResource("1_q4mox")
+mainMenu = ExtResource("2_p34te")
+conductor = NodePath("conductor")
+
+[node name="conductor" parent="." instance=ExtResource("1_vnpu0")]
+_song = ExtResource("2_gtybg")
+
+[node name="Sky" parent="." instance=ExtResource("3_hfi6w")]
+
+[node name="Ground" parent="." instance=ExtResource("5_oqscq")]
+
+[node name="Death" parent="." instance=ExtResource("4_mkg74")]
+position = Vector2(593, 261)
+scale = Vector2(0.317, 0.317)
+
+[node name="Fireball1" parent="." instance=ExtResource("7_qxgk0")]
+position = Vector2(181, 44)
+
+[node name="Fireball2" parent="." instance=ExtResource("8_ikgm8")]
+position = Vector2(834, 130)
+rotation = 1.57079
+
+[node name="Circle" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("9_hgr8o")]
+position = Vector2(505, 348)
+scale = Vector2(0.8, 0.8)
+conductor = NodePath("../conductor")
+
+[node name="Dancer" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("6_ghgwu")]
+position = Vector2(508, 344)
+scale = Vector2(0.8, 0.8)
+conductor = NodePath("../conductor")

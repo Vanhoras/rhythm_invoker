@@ -28,6 +28,7 @@ public partial class Conductor : AudioStreamPlayer
     public int CurrentBeatTotal { get { return _currentBeatTotal; } }
 
     private double _songPosition;
+    private double _songPositionDelta;
 
 	private bool _timerBeforePlaying;
 	private double _timer;
@@ -109,6 +110,7 @@ public partial class Conductor : AudioStreamPlayer
         _currentBeat = 1;
         _currentBeatTotal = 0;
         _songPosition = 0;
+        _songPositionDelta = 0;
         _timer = 0;
     }
 
@@ -118,7 +120,22 @@ public partial class Conductor : AudioStreamPlayer
         GD.Print("Finished");
     }
 
-	private void OnBeatHandler()
+    public double GetDistanceFromClosestBeat()
+    {
+        return 0;
+    }
+
+    public double GetSongPosition()
+    {
+        return _songPosition;
+    }
+
+    public double GetSongPositionDelta()
+    {
+        return _songPositionDelta;
+    }
+
+    private void OnBeatHandler()
 	{
 		_currentBeat++;
         _currentBeatTotal++;
@@ -144,6 +161,8 @@ public partial class Conductor : AudioStreamPlayer
         {
             songPosition = _songPosition;
         }
+
+        _songPositionDelta = songPosition - _songPosition;
 
         _songPosition = songPosition;
 

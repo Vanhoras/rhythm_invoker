@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cir6gup4is3fd"]
+
+[ext_resource type="Script" path="res://game/scripts/effects/Dancer.cs" id="1_4v7ke"]
+[ext_resource type="Texture2D" uid="uid://c235owxqf0da3" path="res://game/assets/sprites/dancer2.png" id="1_136sh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx5mf"]
+atlas = ExtResource("1_136sh")
+region = Rect2(1000, 0, 500, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkt0b"]
+atlas = ExtResource("1_136sh")
+region = Rect2(500, 0, 500, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tacch"]
+atlas = ExtResource("1_136sh")
+region = Rect2(0, 0, 500, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubcl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx5mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkt0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tacch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Dancer" type="Node2D" node_paths=PackedStringArray("animation")]
+script = ExtResource("1_4v7ke")
+animation = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.324, 0.324)
+sprite_frames = SubResource("SpriteFrames_ubcl3")
+frame_progress = 0.71305

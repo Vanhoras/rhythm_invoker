@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmm1cl7b3mep7"]
+
+[ext_resource type="FontFile" uid="uid://c6bou33d7457q" path="res://game/assets/fonts/Viking Medium.ttf" id="1_1dvup"]
+[ext_resource type="Script" path="res://game/scripts/ui/HighscoreMenu.cs" id="1_npfro"]
+
+[node name="highscore" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+script = ExtResource("1_npfro")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="labels" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ScoreLabel" type="RichTextLabel" parent="HBoxContainer/labels"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_1dvup")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Score"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HighScoreLabel" type="RichTextLabel" parent="HBoxContainer/labels"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_1dvup")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "HighScore"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="values" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="ScoreValue" type="RichTextLabel" parent="HBoxContainer/values"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_1dvup")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "5000"
+fit_content = true
+scroll_active = false
+
+[node name="HighScoreValue" type="RichTextLabel" parent="HBoxContainer/values"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_1dvup")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "10000"
+fit_content = true
+scroll_active = false
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1dvup")
+theme_override_font_sizes/font_size = 20
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1dvup")
+theme_override_font_sizes/font_size = 20
+text = "Back To Menu"
+
+[connection signal="pressed" from="MainMenuButton" to="." method="GoBackToMenu"]

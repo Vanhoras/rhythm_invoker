@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bynx5suv1li65"]
+
+[ext_resource type="Script" path="res://game/scripts/ui/MainMenuContainer.cs" id="1_duinc"]
+[ext_resource type="FontFile" uid="uid://c6bou33d7457q" path="res://game/assets/fonts/Viking Medium.ttf" id="1_g56hr"]
+
+[node name="MainContainer" type="VBoxContainer"]
+theme_override_constants/separation = 40
+script = ExtResource("1_duinc")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g56hr")
+theme_override_font_sizes/font_size = 20
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g56hr")
+theme_override_font_sizes/font_size = 20
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_g56hr")
+theme_override_font_sizes/font_size = 20
+text = "QUIT GAME"
+
+[connection signal="pressed" from="PlayButton" to="." method="PlayGame"]
+[connection signal="pressed" from="SettingsButton" to="." method="OpenSettings"]
+[connection signal="pressed" from="QuitButton" to="." method="QuitGame"]

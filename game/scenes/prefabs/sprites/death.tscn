@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca7fka7qq8hsy"]
+
+[ext_resource type="Texture2D" uid="uid://wv1ekbgmdlu3" path="res://game/assets/sprites/old/assetsblu.png" id="1_kn1ar"]
+
+[node name="Death" type="Sprite2D"]
+scale = Vector2(0.324, 0.324)
+texture = ExtResource("1_kn1ar")
+region_enabled = true
+region_rect = Rect2(3232, 46, 2739, 1647)

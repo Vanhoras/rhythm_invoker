@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbdki1u7d7qis"]
+
+[ext_resource type="Script" path="res://game/scripts/ui/MainMenu.cs" id="1_3tdli"]
+[ext_resource type="Texture2D" uid="uid://c0v2qhye7ri46" path="res://game/assets/sprites/old/dancer.jpg" id="2_j7uxl"]
+[ext_resource type="PackedScene" uid="uid://db0syxrp16nu6" path="res://game/scenes/scenes/game.tscn" id="3_3tpij"]
+[ext_resource type="PackedScene" uid="uid://b50lde58abc77" path="res://game/scenes/prefabs/ui/settings_container.tscn" id="3_mybpd"]
+[ext_resource type="PackedScene" uid="uid://bynx5suv1li65" path="res://game/scenes/prefabs/ui/main_container.tscn" id="3_tkvlc"]
+[ext_resource type="PackedScene" uid="uid://bmm1cl7b3mep7" path="res://game/scenes/prefabs/ui/highscore.tscn" id="4_1thjp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0avx"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_3tdli")
+gameScene = ExtResource("3_3tpij")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j7uxl")
+
+[node name="MainPanelContainer" type="PanelContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -239.0
+offset_right = 234.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i0avx")
+
+[node name="MainMarginContainer" type="MarginContainer" parent="TextureRect/MainPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MainContainer" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("settingsNode", "mainMenu") instance=ExtResource("3_tkvlc")]
+layout_mode = 2
+settingsNode = NodePath("../settings_container")
+mainMenu = NodePath("../../../..")
+
+[node name="settings_container" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl") instance=ExtResource("3_mybpd")]
+visible = false
+layout_mode = 2
+mainMenuControl = NodePath("../MainContainer")
+
+[node name="highscore" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl", "mainMenu") instance=ExtResource("4_1thjp")]
+visible = false
+layout_mode = 2
+mainMenuControl = NodePath("../MainContainer")
+mainMenu = NodePath("../../../..")

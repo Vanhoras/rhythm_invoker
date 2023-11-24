@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://p27fhtm5cx4i"]
+
+[ext_resource type="Texture2D" uid="uid://8qpwccpe2eoi" path="res://game/assets/sprites/cielgamejam.jpg" id="1_8ywrg"]
+
+[node name="Sky" type="Sprite2D"]
+position = Vector2(517, 295)
+scale = Vector2(0.293, 0.309)
+texture = ExtResource("1_8ywrg")

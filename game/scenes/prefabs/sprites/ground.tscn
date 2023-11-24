@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2aol0wuh50lr"]
+
+[ext_resource type="Texture2D" uid="uid://2il11misrhgr" path="res://game/assets/sprites/gamejamstones.png" id="1_mph2u"]
+
+[node name="Ground" type="Sprite2D"]
+position = Vector2(511, 372)
+scale = Vector2(0.268, 0.265)
+texture = ExtResource("1_mph2u")
+region_rect = Rect2(2221, 1873, 3753, 1098)

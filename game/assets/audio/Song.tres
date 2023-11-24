@@ -1,11 +1,11 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c163lluc7qonj"]
 
-[ext_resource type="AudioStream" path="res://game/assets/audio/Metronome 120 BPM - QuickSounds.com.mp3" id="1_f2lvp"]
+[ext_resource type="AudioStream" uid="uid://cojvmjjprimty" path="res://game/assets/audio/OneButtonBeatTest_101BPM.mp3" id="1_42p6e"]
 [ext_resource type="Script" path="res://game/scripts/rhythm/Song.cs" id="1_lbboo"]
 
 [resource]
 script = ExtResource("1_lbboo")
-_audioStream = ExtResource("1_f2lvp")
+_audioStream = ExtResource("1_42p6e")
 _bpm = 120
 _beatPerMeasure = 4
 _beatsBeforeStart = 8

@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bm4kv78qclcua"]
+
+[ext_resource type="Script" path="res://game/scripts/effects/Circle.cs" id="1_s1m5q"]
+[ext_resource type="Texture2D" uid="uid://b3tmjaabk8wui" path="res://game/assets/sprites/rings/outer_ring_1.png" id="2_4p35y"]
+[ext_resource type="Texture2D" uid="uid://dbyo7j2uo8e61" path="res://game/assets/sprites/rings/outer_ring_2.png" id="3_koipu"]
+[ext_resource type="Texture2D" uid="uid://26eev0bs488n" path="res://game/assets/sprites/rings/outer_ring_3.png" id="4_n8tap"]
+[ext_resource type="Texture2D" uid="uid://bfhng3yls4t8d" path="res://game/assets/sprites/rings/inner_ring_1.png" id="5_rq4hn"]
+[ext_resource type="Texture2D" uid="uid://cen8syvvm8on6" path="res://game/assets/sprites/rings/inner_ring_2.png" id="6_hrdbw"]
+[ext_resource type="Texture2D" uid="uid://cixeouvhdn1fa" path="res://game/assets/sprites/rings/inner_ring_3.png" id="7_yddjo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1l7q1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4p35y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_koipu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n8tap")
+}],
+"loop": true,
+"name": &"flare",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28ouy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rq4hn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hrdbw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yddjo")
+}],
+"loop": true,
+"name": &"flare",
+"speed": 2.0
+}]
+
+[node name="Circle" type="Node2D" node_paths=PackedStringArray("innerCircle", "outerCircle")]
+script = ExtResource("1_s1m5q")
+innerCircle = NodePath("InnerCircle")
+outerCircle = NodePath("OuterCircle")
+rotationSpeed = 0.4
+
+[node name="OuterCircle" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.324, 0.324)
+sprite_frames = SubResource("SpriteFrames_1l7q1")
+frame = 1
+frame_progress = 0.400148
+
+[node name="InnerCircle" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.324, 0.324)
+sprite_frames = SubResource("SpriteFrames_28ouy")
