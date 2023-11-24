@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://game/scripts/rhythm/Fireball.cs" id="1_6t6e4"]
 [ext_resource type="Texture2D" uid="uid://wv1ekbgmdlu3" path="res://game/assets/sprites/old/assetsblu.png" id="2_jco0f"]
 
-[node name="Fireball2" type="Node2D"]
+[node name="Fireball2" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_6t6e4")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.324, 0.324)

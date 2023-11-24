@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://db0syxrp16nu6"]
+[gd_scene load_steps=14 format=3 uid="uid://db0syxrp16nu6"]
 
 [ext_resource type="Script" path="res://game/scripts/Level.cs" id="1_q4mox"]
 [ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="1_vnpu0"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d1f0v65vgkrqg" path="res://game/scenes/prefabs/gameplay/fireball_1.tscn" id="7_qxgk0"]
 [ext_resource type="PackedScene" uid="uid://omf28mlqlnkf" path="res://game/scenes/prefabs/gameplay/fireball_2.tscn" id="8_ikgm8"]
 [ext_resource type="PackedScene" uid="uid://bm4kv78qclcua" path="res://game/scenes/prefabs/gameplay/circle.tscn" id="9_hgr8o"]
+[ext_resource type="PackedScene" uid="uid://d37hgx0o2bd1c" path="res://game/scenes/prefabs/tools/distance_measurer.tscn" id="10_4rai8"]
+[ext_resource type="PackedScene" uid="uid://ux41ncvglnf3" path="res://game/scenes/prefabs/gameplay/spawner.tscn" id="13_8vrqy"]
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("conductor")]
 script = ExtResource("1_q4mox")
@@ -28,12 +30,26 @@ _song = ExtResource("2_gtybg")
 position = Vector2(593, 261)
 scale = Vector2(0.317, 0.317)
 
-[node name="Fireball1" parent="." instance=ExtResource("7_qxgk0")]
+[node name="Fireball1" parent="." node_paths=PackedStringArray("conductor", "circle") instance=ExtResource("7_qxgk0")]
 position = Vector2(181, 44)
+conductor = NodePath("../conductor")
+circle = NodePath("../Circle")
+moveTimeInBeats = 4
+lengthToPerfect = 125.0
+lengthToMissed = 65.0
+beatsTillMissed = 0.5
 
-[node name="Fireball2" parent="." instance=ExtResource("8_ikgm8")]
-position = Vector2(834, 130)
+[node name="Fireball2" parent="." node_paths=PackedStringArray("conductor", "circle") instance=ExtResource("8_ikgm8")]
+position = Vector2(834, 129)
 rotation = 1.57079
+conductor = NodePath("../conductor")
+circle = NodePath("../Circle")
+moveTimeInBeats = 4
+lengthToPerfect = 125.0
+lengthToMissed = 65.0
+beatsTillMissed = 0.5
+
+[node name="DistanceMeasurer" parent="." instance=ExtResource("10_4rai8")]
 
 [node name="Circle" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("9_hgr8o")]
 position = Vector2(505, 348)
@@ -44,3 +60,5 @@ conductor = NodePath("../conductor")
 position = Vector2(508, 344)
 scale = Vector2(0.8, 0.8)
 conductor = NodePath("../conductor")
+
+[node name="Spawner" parent="." instance=ExtResource("13_8vrqy")]

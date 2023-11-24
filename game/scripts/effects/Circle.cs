@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Circle : Node
+public partial class Circle : Node2D
 {
 
 	[Export]

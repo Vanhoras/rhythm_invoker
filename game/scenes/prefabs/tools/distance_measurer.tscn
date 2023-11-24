@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d37hgx0o2bd1c"]
+
+[ext_resource type="Script" path="res://game/scripts/tool/DistanceMeasurer.cs" id="1_o12fi"]
+
+[node name="DistanceMeasurer" type="Sprite2D" node_paths=PackedStringArray("targetNode")]
+position = Vector2(450, 293)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_o12fi")
+targetNode = NodePath("")
