@@ -3,16 +3,26 @@ using Godot;
 public partial class MainMenu : Node
 {
 	[Export]
-	private Node mainNode;
+    private SceneLoader loader;
 
     [Export]
-    private PackedScene gameScene;
+    private Control mainMenuContainer;
+
+    [Export]
+    private Control highscoreMenu;
+
+    public void Instantiate(SceneLoader sceneLoader, bool showHighscore)
+    {
+        loader = sceneLoader;
+        if (showHighscore )
+        {
+            mainMenuContainer.Hide();
+            highscoreMenu.Show();
+        }
+    }
 
     public void PlayGame()
 	{
-        Node gameNode = gameScene.Instantiate();
-        mainNode.AddChild(gameNode);
-
-        QueueFree();
+        loader.LoadLevel();
     }
 }

@@ -1,5 +1,7 @@
 using Godot;
+using Godot.Collections;
 
+[GlobalClass]
 public partial class Song : Resource
 {
 	[Export]
@@ -36,4 +38,9 @@ public partial class Song : Resource
     {
         get { return _beatsBeforeStart; }
     }
+
+    [Export]
+    private Array<Note> _notes;
+
+    public Array<Note> Notes { get { return _notes; } }
 }

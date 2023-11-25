@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbdki1u7d7qis"]
+[gd_scene load_steps=7 format=3 uid="uid://cbdki1u7d7qis"]
 
 [ext_resource type="Script" path="res://game/scripts/ui/MainMenu.cs" id="1_3tdli"]
 [ext_resource type="Texture2D" uid="uid://c0v2qhye7ri46" path="res://game/assets/sprites/old/dancer.jpg" id="2_j7uxl"]
-[ext_resource type="PackedScene" uid="uid://db0syxrp16nu6" path="res://game/scenes/scenes/game.tscn" id="3_3tpij"]
 [ext_resource type="PackedScene" uid="uid://b50lde58abc77" path="res://game/scenes/prefabs/ui/settings_container.tscn" id="3_mybpd"]
 [ext_resource type="PackedScene" uid="uid://bynx5suv1li65" path="res://game/scenes/prefabs/ui/main_container.tscn" id="3_tkvlc"]
 [ext_resource type="PackedScene" uid="uid://bmm1cl7b3mep7" path="res://game/scenes/prefabs/ui/highscore.tscn" id="4_1thjp"]
@@ -10,7 +9,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0avx"]
 bg_color = Color(0.223529, 0.223529, 0.223529, 1)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("mainMenuContainer", "highscoreMenu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +18,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_3tdli")
-gameScene = ExtResource("3_3tpij")
+mainMenuContainer = NodePath("TextureRect/MainPanelContainer/MainMarginContainer/MainContainer")
+highscoreMenu = NodePath("TextureRect/MainPanelContainer/MainMarginContainer/highscore")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

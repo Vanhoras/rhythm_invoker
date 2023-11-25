@@ -18,7 +18,7 @@ public partial class Dancer : Node
 		frameNumber = animation.SpriteFrames.GetFrameCount("default");
 	}
 
-	private void ShowNextFrame(Conductor conductor)
+	private void ShowNextFrame()
 	{
 		currentFrame = currentFrame < frameNumber - 1 ? currentFrame + 1 : 0;
 

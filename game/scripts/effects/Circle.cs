@@ -41,7 +41,7 @@ public partial class Circle : Node2D
 		outerCircle.Rotate(-rotation);
 	}
 
-	private void OnBeat(Conductor conductor)
+	private void OnBeat()
 	{
         innerCircleCurrentFrame = innerCircleCurrentFrame < innerCircleAnimationFrames - 1 ? innerCircleCurrentFrame + 1 : 0;
         outerCircleCurrentFrame = outerCircleCurrentFrame < outerCircleAnimationFrames - 1 ? outerCircleCurrentFrame + 1 : 0;

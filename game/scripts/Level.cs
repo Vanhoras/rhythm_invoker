@@ -3,13 +3,14 @@ using Godot;
 public partial class Level : Node
 {
 	[Export]
-	private CanvasLayer canvas;
-
-	[Export]
-	private PackedScene mainMenu;
-
-	[Export]
 	private Conductor conductor;
+
+	private SceneLoader sceneLoader;	
+
+	public void Instantiate(SceneLoader sceneLoader)
+	{
+		this.sceneLoader = sceneLoader;
+	}
 
 	public override void _Ready()
 	{
@@ -18,10 +19,7 @@ public partial class Level : Node
 
 	public void FinishLevel()
 	{
-		Node instance = mainMenu.Instantiate();
-		canvas.AddChild(instance);
-
-		QueueFree();
+		sceneLoader.LoadMainMenu();
 	}
 
 }

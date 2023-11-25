@@ -4,10 +4,10 @@ using System;
 public partial class Conductor : AudioStreamPlayer
 {
 	[Signal]
-    public delegate void OnBeatEventHandler(Conductor conductor);
+    public delegate void OnBeatEventHandler();
 
     [Signal]
-    public delegate void OnMeasureEventHandler(Conductor conductor);
+    public delegate void OnMeasureEventHandler();
 
     [Export]
 	private Song _song;
@@ -34,7 +34,7 @@ public partial class Conductor : AudioStreamPlayer
 	private double _timer;
 
     private bool _playing;
-    public new bool Playing { get { return _playing || _timerBeforePlaying; } }
+    public new bool Playing { get { return _playing; } }
 
     public override void _Ready()
 	{
@@ -145,10 +145,10 @@ public partial class Conductor : AudioStreamPlayer
 		{
 			_currentBeat = 1;
 			_currentMeasure++;
-			EmitSignal(SignalName.OnMeasure, this);
+			EmitSignal(SignalName.OnMeasure);
 		}
 
-		EmitSignal(SignalName.OnBeat, this);
+		EmitSignal(SignalName.OnBeat);
         GD.Print($"Beat _currentBeatTotal {_currentBeatTotal} ");
     }
 

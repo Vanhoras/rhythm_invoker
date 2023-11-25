@@ -8,6 +8,6 @@ public partial class DistanceMeasurer : Node2D
 	public override void _Ready()
 	{
 		float distance = GlobalPosition.DistanceTo(targetNode.GlobalPosition);
-		GD.Print($"Distance: {distance}");
+		GD.Print($"Distance: {distance} this {Name} target {targetNode.Name}");
 	}
 }
