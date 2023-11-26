@@ -13,10 +13,10 @@ public partial class MainMenu : Node
         ui.PlayGameEvent += PlayGame;
     }
 
-    public void Instantiate(SceneLoader sceneLoader, bool showHighscore)
+    public void Instantiate(SceneLoader sceneLoader, bool showHighscore, HighScoreManager highScoreManager)
     {
         loader = sceneLoader;
-        ui.Instantiate(showHighscore);
+        ui.Instantiate(showHighscore, highScoreManager);
     }
 
     public void PlayGame()

@@ -7,8 +7,14 @@ public partial class HighscoreMenu : Control
 
 	[Export]
 	private MainMenuUI mainMenuUI;
-	
-	public void GoBackToMenu()
+
+    [Export]
+    private RichTextLabel lastScoreLabel;
+
+    [Export]
+    private RichTextLabel highScoreLabel;
+
+    public void GoBackToMenu()
 	{
         mainMenuControl.Show();
 		Hide();
@@ -18,4 +24,10 @@ public partial class HighscoreMenu : Control
 	{
         mainMenuUI.PlayGame();
     }
+
+	public void DisplayScore(long highScore, long lastScore)
+	{
+		lastScoreLabel.Text = "[center]" + lastScore.ToString();
+		highScoreLabel.Text = "[center]" + highScore.ToString();
+	}
 }

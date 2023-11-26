@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmtycgdqfr5kj"]
+
+[ext_resource type="Script" path="res://game/scripts/ui/Credits.cs" id="1_22lio"]
+
+[node name="credits" type="VBoxContainer"]
+script = ExtResource("1_22lio")

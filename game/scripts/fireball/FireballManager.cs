@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
+using static System.Formats.Asn1.AsnWriter;
 
 public partial class FireballManager : Node
 {
@@ -8,7 +9,13 @@ public partial class FireballManager : Node
 	private Node fireballBaseNode;
 
     [Export]
-    private PackedScene fireballPrefab;
+    private ScoreManager scoreManager;
+
+    [Export]
+    public Circle circle;
+
+    [Export]
+    public Conductor conductor;
 
     [Export]
     private HitNotification hitNotification;
@@ -16,11 +23,9 @@ public partial class FireballManager : Node
     [Export]
     private Node2D[] spawnpoints;
 
-    [Export]
-    public Conductor conductor;
 
     [Export]
-    public Circle circle;
+    private PackedScene fireballPrefab;
 
     [Export]
     private float lengthToPerfect;
@@ -85,16 +90,18 @@ public partial class FireballManager : Node
                 fireballs[closestIndex].Miss();
             } else if (distanceFromPerfect > perfectZoneTime)
             {
-                GD.Print("OK");
                 fireballs[closestIndex].QueueFree();
                 fireballs.Remove(closestIndex);
+
                 hitNotification.ShowHitNotification(HitType.OK);
+                scoreManager.HitNote(HitType.OK);
             } else
             {
-                GD.Print("PERFECT");
                 fireballs[closestIndex].QueueFree();
                 fireballs.Remove(closestIndex);
+
                 hitNotification.ShowHitNotification(HitType.PERFECT);
+                scoreManager.HitNote(HitType.PERFECT);
             }
         }
     }
@@ -132,7 +139,8 @@ public partial class FireballManager : Node
     private void OnFireballMissed(int missedIndex)
     {
         fireballs.Remove(missedIndex);
+
         hitNotification.ShowHitNotification(HitType.MISSED);
-        GD.Print($"OnFireballMissed {missedIndex}");
+        scoreManager.HitNote(HitType.MISSED);
     }
 }

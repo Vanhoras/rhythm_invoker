@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbdki1u7d7qis"]
+[gd_scene load_steps=7 format=3 uid="uid://cbdki1u7d7qis"]
 
 [ext_resource type="Script" path="res://game/scripts/ui/MainMenuUI.cs" id="1_5kbw0"]
 [ext_resource type="PackedScene" uid="uid://bynx5suv1li65" path="res://game/scenes/prefabs/ui/main_container.tscn" id="2_0jf05"]
 [ext_resource type="PackedScene" uid="uid://b50lde58abc77" path="res://game/scenes/prefabs/ui/settings_container.tscn" id="3_dellu"]
+[ext_resource type="PackedScene" uid="uid://cmtycgdqfr5kj" path="res://game/scenes/prefabs/ui/credits.tscn" id="4_rtxet"]
 [ext_resource type="PackedScene" uid="uid://bmm1cl7b3mep7" path="res://game/scenes/prefabs/ui/highscore.tscn" id="4_toe0l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fli2j"]
@@ -60,6 +61,9 @@ mainMenuUI = NodePath("../../../..")
 visible = false
 layout_mode = 2
 mainMenuControl = NodePath("../MainContainer")
+
+[node name="credits" parent="TextureRect/MainPanelContainer/MainMarginContainer" instance=ExtResource("4_rtxet")]
+layout_mode = 2
 
 [node name="highscore" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl", "mainMenuUI") instance=ExtResource("4_toe0l")]
 visible = false

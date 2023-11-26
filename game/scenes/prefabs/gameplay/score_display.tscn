@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2s5e3ctlyiod"]
+
+[ext_resource type="Script" path="res://game/scripts/score/ScoreDisplay.cs" id="1_lrkl4"]
+[ext_resource type="FontFile" uid="uid://c6bou33d7457q" path="res://game/assets/fonts/Viking Medium.ttf" id="2_i4q6n"]
+
+[node name="ScoreDisplay" type="Node2D" node_paths=PackedStringArray("ScoreLabel")]
+script = ExtResource("1_lrkl4")
+ScoreLabel = NodePath("ScoreValueLabel")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.901961, 0.305882, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i4q6n")
+theme_override_font_sizes/font_size = 30
+text = "SCORE"
+
+[node name="ScoreValueLabel" type="Label" parent="."]
+offset_left = 161.0
+offset_top = -1.0
+offset_right = 258.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.901961, 0.305882, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i4q6n")
+theme_override_font_sizes/font_size = 30
+text = "0"

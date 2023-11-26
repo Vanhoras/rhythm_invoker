@@ -14,6 +14,9 @@ public partial class SceneLoader : Node
     [Export]
     private Node mainMenu;
 
+    [Export]
+    private HighScoreManager highScoreManager;
+
     private Node game;
 
     public override void _Ready()
@@ -26,7 +29,7 @@ public partial class SceneLoader : Node
         mainNode.AddChild(instance);
 
         mainMenu = instance;
-        ((MainMenu)mainMenu).Instantiate(this, true);
+        ((MainMenu)mainMenu).Instantiate(this, true, highScoreManager);
 
         game.QueueFree();
     }
@@ -37,7 +40,7 @@ public partial class SceneLoader : Node
         mainNode.AddChild(instance);
 
         game = instance;
-        ((Level)game).Instantiate(this);
+        ((Level)game).Instantiate(this, highScoreManager);
 
         mainMenu.QueueFree();
     }

@@ -9,15 +9,17 @@ public partial class MainMenuUI : Node
     private Control mainMenuContainer;
 
     [Export]
-    private Control highscoreMenu;
+    private HighscoreMenu highscoreMenu;
 
-    public void Instantiate(bool showHighscore)
+    public void Instantiate(bool showHighscore, HighScoreManager highScoreManager)
     {
         if (showHighscore )
         {
             mainMenuContainer.Hide();
             highscoreMenu.Show();
         }
+
+        highscoreMenu.DisplayScore(highScoreManager.HighScore, highScoreManager.LastScore);
     }
 
     public void PlayGame()

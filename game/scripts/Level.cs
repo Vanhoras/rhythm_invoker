@@ -5,11 +5,16 @@ public partial class Level : Node
 	[Export]
 	private Conductor conductor;
 
-	private SceneLoader sceneLoader;	
+    [Export]
+    private ScoreManager scoreManager;
 
-	public void Instantiate(SceneLoader sceneLoader)
+    private SceneLoader sceneLoader;	
+	private HighScoreManager highScoreManager;
+
+	public void Instantiate(SceneLoader sceneLoader, HighScoreManager highScoreManager)
 	{
 		this.sceneLoader = sceneLoader;
+		this.highScoreManager = highScoreManager;
 	}
 
 	public override void _Ready()
@@ -19,7 +24,9 @@ public partial class Level : Node
 
 	public void FinishLevel()
 	{
-		sceneLoader.LoadMainMenu();
+		highScoreManager.SetScore(scoreManager.Score);
+
+        sceneLoader.LoadMainMenu();
 	}
 
 }

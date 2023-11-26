@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://db0syxrp16nu6"]
+[gd_scene load_steps=17 format=3 uid="uid://db0syxrp16nu6"]
 
 [ext_resource type="Script" path="res://game/scripts/Level.cs" id="1_q4mox"]
 [ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="1_vnpu0"]
-[ext_resource type="Script" path="res://game/scenes/prefabs/gameplay/score/ScoreManager.cs" id="2_02em3"]
+[ext_resource type="Script" path="res://game/scripts/score/ScoreManager.cs" id="2_b08o1"]
 [ext_resource type="PackedScene" uid="uid://p27fhtm5cx4i" path="res://game/scenes/prefabs/sprites/sky.tscn" id="3_hfi6w"]
 [ext_resource type="Resource" uid="uid://c4newkjnpae2" path="res://game/assets/audio/main_song.tres" id="3_se7ub"]
 [ext_resource type="PackedScene" uid="uid://ca7fka7qq8hsy" path="res://game/scenes/prefabs/sprites/death.tscn" id="4_mkg74"]
@@ -15,13 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://ux41ncvglnf3" path="res://game/scenes/prefabs/gameplay/spawner.tscn" id="13_8vrqy"]
 [ext_resource type="Script" path="res://game/scripts/tool/DistanceMeasurer.cs" id="13_atvcv"]
 [ext_resource type="PackedScene" uid="uid://dk16dh1fo4eu" path="res://game/scenes/prefabs/gameplay/hit_notification.tscn" id="14_krehh"]
+[ext_resource type="PackedScene" uid="uid://b2s5e3ctlyiod" path="res://game/scenes/prefabs/gameplay/score_display.tscn" id="16_tritd"]
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("conductor")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("conductor", "scoreManager")]
 script = ExtResource("1_q4mox")
 conductor = NodePath("conductor")
+scoreManager = NodePath("ScoreManager")
 
-[node name="ScoreManager" type="Node" parent="."]
-script = ExtResource("2_02em3")
+[node name="ScoreManager" type="Node" parent="." node_paths=PackedStringArray("scoreDisplay")]
+script = ExtResource("2_b08o1")
+scoreDisplay = NodePath("../ScoreDisplay")
 
 [node name="conductor" parent="." instance=ExtResource("1_vnpu0")]
 _song = ExtResource("3_se7ub")
@@ -47,14 +50,15 @@ position = Vector2(508, 344)
 scale = Vector2(0.8, 0.8)
 conductor = NodePath("../conductor")
 
-[node name="FireballManager" parent="." node_paths=PackedStringArray("fireballBaseNode", "hitNotification", "spawnpoints", "conductor", "circle") instance=ExtResource("13_8vrqy")]
+[node name="FireballManager" parent="." node_paths=PackedStringArray("fireballBaseNode", "scoreManager", "circle", "conductor", "hitNotification", "spawnpoints") instance=ExtResource("13_8vrqy")]
 script = ExtResource("11_cbg53")
 fireballBaseNode = NodePath("../Fireballs")
-fireballPrefab = ExtResource("12_h1lqj")
+scoreManager = NodePath("../ScoreManager")
+circle = NodePath("../Circle")
+conductor = NodePath("../conductor")
 hitNotification = NodePath("../HitNotification")
 spawnpoints = [NodePath("../Spawnpoints/Spawnpoint0"), NodePath("../Spawnpoints/Spawnpoint1"), NodePath("../Spawnpoints/Spawnpoint2"), NodePath("../Spawnpoints/Spawnpoint3"), NodePath("../Spawnpoints/Spawnpoint4"), NodePath("../Spawnpoints/Spawnpoint5"), NodePath("../Spawnpoints/Spawnpoint6"), NodePath("../Spawnpoints/Spawnpoint7")]
-conductor = NodePath("../conductor")
-circle = NodePath("../Circle")
+fireballPrefab = ExtResource("12_h1lqj")
 lengthToPerfect = 185.0
 lengthToMissed = 145.0
 perfectZoneTimeInBeats = 0.25
@@ -107,3 +111,6 @@ targetNode = NodePath("../../Circle")
 [node name="HitNotification" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("14_krehh")]
 position = Vector2(421, 528)
 conductor = NodePath("../conductor")
+
+[node name="ScoreDisplay" parent="." instance=ExtResource("16_tritd")]
+position = Vector2(24, 22)
