@@ -17,7 +17,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_bvggq")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "Programming"
+text = "Programming 
+/ GameDesign"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

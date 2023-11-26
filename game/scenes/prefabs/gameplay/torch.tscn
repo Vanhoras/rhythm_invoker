@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://3c6r11rax0yd"]
+
+[ext_resource type="Script" path="res://game/scripts/effects/Torch.cs" id="1_oj5n1"]
+[ext_resource type="Texture2D" uid="uid://de6dfwlvptg0h" path="res://game/assets/sprites/torch/toch.png" id="2_7mi7t"]
+[ext_resource type="Texture2D" uid="uid://cxc171ug8ty1o" path="res://game/assets/sprites/torch/fire1.png" id="2_ogqqr"]
+[ext_resource type="Texture2D" uid="uid://dw11p11qgrnkn" path="res://game/assets/sprites/torch/fire2.png" id="3_ln3br"]
+[ext_resource type="Texture2D" uid="uid://rpa3qxknkm2g" path="res://game/assets/sprites/torch/fire3.png" id="4_aqagl"]
+[ext_resource type="Texture2D" uid="uid://bjb0xx1kjnnr3" path="res://game/assets/sprites/torch/fire4.png" id="5_25ciw"]
+[ext_resource type="Texture2D" uid="uid://kbfq0sq0wqr4" path="res://game/assets/sprites/torch/fire5.png" id="6_p07gb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtbv6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ogqqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ln3br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aqagl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_25ciw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p07gb")
+}],
+"loop": true,
+"name": &"flare",
+"speed": 2.0
+}]
+
+[node name="Torch" type="Node2D" node_paths=PackedStringArray("fire")]
+script = ExtResource("1_oj5n1")
+fire = NodePath("fire")
+flareDurationInBeats = 1.0
+
+[node name="fire" type="AnimatedSprite2D" parent="."]
+position = Vector2(-39, -815)
+sprite_frames = SubResource("SpriteFrames_qtbv6")
+frame_progress = 0.118638
+
+[node name="torchSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_7mi7t")
+region_enabled = true
+region_rect = Rect2(166, 473, 286, 1237)

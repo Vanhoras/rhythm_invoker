@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de6dfwlvptg0h"
-path="res://.godot/imported/toch.png-8670858e9ca481a4af3244b9a52f1856.ctex"
+uid="uid://bjb0xx1kjnnr3"
+path="res://.godot/imported/fire4.png-a116ace43c47b48d3eb5686afc96625f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/assets/sprites/toch.png"
-dest_files=["res://.godot/imported/toch.png-8670858e9ca481a4af3244b9a52f1856.ctex"]
+source_file="res://game/assets/sprites/torch/fire4.png"
+dest_files=["res://.godot/imported/fire4.png-a116ace43c47b48d3eb5686afc96625f.ctex"]
 
 [params]
 

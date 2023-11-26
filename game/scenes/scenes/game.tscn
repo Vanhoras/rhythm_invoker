@@ -8,14 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://ca7fka7qq8hsy" path="res://game/scenes/prefabs/sprites/death.tscn" id="4_mkg74"]
 [ext_resource type="PackedScene" uid="uid://b2aol0wuh50lr" path="res://game/scenes/prefabs/sprites/ground.tscn" id="5_oqscq"]
 [ext_resource type="PackedScene" uid="uid://cir6gup4is3fd" path="res://game/scenes/prefabs/gameplay/dancer.tscn" id="6_ghgwu"]
+[ext_resource type="Texture2D" uid="uid://cpdbaebslht08" path="res://game/assets/sprites/bones.png" id="9_cnxfr"]
 [ext_resource type="PackedScene" uid="uid://bm4kv78qclcua" path="res://game/scenes/prefabs/gameplay/circle.tscn" id="9_hgr8o"]
-[ext_resource type="PackedScene" uid="uid://d37hgx0o2bd1c" path="res://game/scenes/prefabs/tools/distance_measurer.tscn" id="10_4rai8"]
 [ext_resource type="Script" path="res://game/scripts/fireball/FireballManager.cs" id="11_cbg53"]
 [ext_resource type="PackedScene" uid="uid://omf28mlqlnkf" path="res://game/scenes/prefabs/gameplay/fireball_2.tscn" id="12_h1lqj"]
 [ext_resource type="PackedScene" uid="uid://ux41ncvglnf3" path="res://game/scenes/prefabs/gameplay/spawner.tscn" id="13_8vrqy"]
-[ext_resource type="Script" path="res://game/scripts/tool/DistanceMeasurer.cs" id="13_atvcv"]
 [ext_resource type="PackedScene" uid="uid://dk16dh1fo4eu" path="res://game/scenes/prefabs/gameplay/hit_notification.tscn" id="14_krehh"]
 [ext_resource type="PackedScene" uid="uid://b2s5e3ctlyiod" path="res://game/scenes/prefabs/gameplay/score_display.tscn" id="16_tritd"]
+[ext_resource type="PackedScene" uid="uid://3c6r11rax0yd" path="res://game/scenes/prefabs/gameplay/torch.tscn" id="17_cgo0e"]
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("conductor", "scoreManager")]
 script = ExtResource("1_q4mox")
@@ -31,14 +31,77 @@ _song = ExtResource("3_se7ub")
 
 [node name="Sky" parent="." instance=ExtResource("3_hfi6w")]
 
+[node name="Torch2" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+position = Vector2(260, 450)
+scale = Vector2(0.2, 0.2)
+conductor = NodePath("../conductor")
+
+[node name="Torch3" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+position = Vector2(773, 428)
+scale = Vector2(0.22, 0.22)
+conductor = NodePath("../conductor")
+
 [node name="Ground" parent="." instance=ExtResource("5_oqscq")]
 
 [node name="Death" parent="." instance=ExtResource("4_mkg74")]
 position = Vector2(593, 261)
 scale = Vector2(0.317, 0.317)
 
-[node name="DistanceMeasurer" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("10_4rai8")]
-targetNode = NodePath("../Circle")
+[node name="debriet" type="Node2D" parent="."]
+
+[node name="debriet1" type="Sprite2D" parent="debriet"]
+position = Vector2(151, 528)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_cnxfr")
+region_enabled = true
+region_rect = Rect2(215, 85, 195, 197)
+
+[node name="debriet2" type="Sprite2D" parent="debriet"]
+position = Vector2(290, 462)
+rotation = 1.309
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_cnxfr")
+region_enabled = true
+region_rect = Rect2(70, 326, 477, 88)
+
+[node name="debriet3" type="Sprite2D" parent="debriet"]
+position = Vector2(188, 524)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_cnxfr")
+region_enabled = true
+region_rect = Rect2(121, 456, 128, 107)
+
+[node name="debriet4" type="Sprite2D" parent="debriet"]
+position = Vector2(895, 468)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_cnxfr")
+region_enabled = true
+region_rect = Rect2(322, 475, 196, 103)
+
+[node name="debriet5" type="Sprite2D" parent="debriet"]
+position = Vector2(868, 214)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_cnxfr")
+region_enabled = true
+region_rect = Rect2(215, 85, 195, 197)
+
+[node name="debriet6" type="Sprite2D" parent="debriet"]
+position = Vector2(943, 423)
+rotation = 1.309
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_cnxfr")
+region_enabled = true
+region_rect = Rect2(70, 326, 477, 88)
+
+[node name="Torch" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+position = Vector2(44, 533)
+scale = Vector2(0.24, 0.24)
+conductor = NodePath("../conductor")
+
+[node name="Torch4" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+position = Vector2(971, 579)
+scale = Vector2(-0.32, 0.32)
+conductor = NodePath("../conductor")
 
 [node name="Circle" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("9_hgr8o")]
 position = Vector2(505, 348)
@@ -68,45 +131,29 @@ okZoneTimeInBeats = 0.5
 
 [node name="Spawnpoints" type="Node2D" parent="."]
 
-[node name="Spawnpoint0" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint0" type="Node2D" parent="Spawnpoints"]
 position = Vector2(-22, 351)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint1" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint1" type="Node2D" parent="Spawnpoints"]
 position = Vector2(-23, 148)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint2" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint2" type="Node2D" parent="Spawnpoints"]
 position = Vector2(173, -23)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint3" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint3" type="Node2D" parent="Spawnpoints"]
 position = Vector2(402, -24)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint4" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint4" type="Node2D" parent="Spawnpoints"]
 position = Vector2(644, -27)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint5" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint5" type="Node2D" parent="Spawnpoints"]
 position = Vector2(888, -25)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint6" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint6" type="Node2D" parent="Spawnpoints"]
 position = Vector2(1051, 163)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint7" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint7" type="Node2D" parent="Spawnpoints"]
 position = Vector2(1052, 348)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
 
 [node name="HitNotification" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("14_krehh")]
 position = Vector2(421, 528)

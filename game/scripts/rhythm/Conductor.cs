@@ -149,7 +149,7 @@ public partial class Conductor : AudioStreamPlayer
 		}
 
 		EmitSignal(SignalName.OnBeat);
-        GD.Print($"Beat _currentBeatTotal {_currentBeatTotal} ");
+        // GD.Print($"Beat _currentBeatTotal {_currentBeatTotal} ");
     }
 
 	private double CalculateSongPosition()
