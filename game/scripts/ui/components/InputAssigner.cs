@@ -24,7 +24,7 @@ public partial class InputAssigner : Button
 
 	public void OnPressed()
 	{
-        keyLabel.Text = "PRESS KEY TO BIND...";
+        keyLabel.Text = "PRESS KEY TO BIND";
 		isRemapping = true;
     }
 

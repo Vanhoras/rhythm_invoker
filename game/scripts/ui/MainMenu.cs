@@ -6,19 +6,17 @@ public partial class MainMenu : Node
     private SceneLoader loader;
 
     [Export]
-    private Control mainMenuContainer;
+    private MainMenuUI ui;
 
-    [Export]
-    private Control highscoreMenu;
+    public override void _Ready()
+    {
+        ui.PlayGameEvent += PlayGame;
+    }
 
     public void Instantiate(SceneLoader sceneLoader, bool showHighscore)
     {
         loader = sceneLoader;
-        if (showHighscore )
-        {
-            mainMenuContainer.Hide();
-            highscoreMenu.Show();
-        }
+        ui.Instantiate(showHighscore);
     }
 
     public void PlayGame()

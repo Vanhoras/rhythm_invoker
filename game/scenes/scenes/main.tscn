@@ -1,25 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://r3abkbclv24u"]
+[gd_scene load_steps=6 format=3 uid="uid://r3abkbclv24u"]
 
 [ext_resource type="Script" path="res://game/scripts/SceneLoader.cs" id="1_n73s1"]
-[ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/scenes/main_menu.tscn" id="1_x5x2b"]
+[ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/prefabs/ui/main_menu_ui.tscn" id="1_x5x2b"]
 [ext_resource type="PackedScene" uid="uid://db0syxrp16nu6" path="res://game/scenes/scenes/game.tscn" id="3_n5uck"]
+[ext_resource type="Script" path="res://game/scenes/prefabs/gameplay/score/HighScoreManager.cs" id="4_ec32n"]
+[ext_resource type="PackedScene" uid="uid://bpdsp4b2vu53i" path="res://game/scenes/scenes/main_menu.tscn" id="4_ljsp5"]
 
 [node name="main" type="Node2D"]
 
-[node name="SceneLoader" type="Node" parent="." node_paths=PackedStringArray("mainNode", "canvas", "mainMenu")]
+[node name="SceneLoader" type="Node" parent="." node_paths=PackedStringArray("mainNode", "mainMenu")]
 script = ExtResource("1_n73s1")
 mainNode = NodePath("..")
-canvas = NodePath("../MainMenuCanvas")
 mainMenuPackedScene = ExtResource("1_x5x2b")
 gamePackedScene = ExtResource("3_n5uck")
-mainMenu = NodePath("../MainMenuCanvas/MainMenu")
+mainMenu = NodePath("../main_menu")
 
 [node name="InputCalibrationManager" type="Node" parent="."]
 
-[node name="ScoreManager" type="Node" parent="."]
+[node name="HighScoreManager" type="Node" parent="."]
+script = ExtResource("4_ec32n")
 
-[node name="MainMenuCanvas" type="CanvasLayer" parent="."]
-
-[node name="MainMenu" parent="MainMenuCanvas" node_paths=PackedStringArray("loader") instance=ExtResource("1_x5x2b")]
-process_mode = 3
-loader = NodePath("../../SceneLoader")
+[node name="main_menu" parent="." node_paths=PackedStringArray("loader") instance=ExtResource("4_ljsp5")]
+loader = NodePath("../SceneLoader")

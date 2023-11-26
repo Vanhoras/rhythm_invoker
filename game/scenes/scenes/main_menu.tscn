@@ -1,70 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbdki1u7d7qis"]
+[gd_scene load_steps=9 format=3 uid="uid://bpdsp4b2vu53i"]
 
 [ext_resource type="Script" path="res://game/scripts/ui/MainMenu.cs" id="1_3tdli"]
-[ext_resource type="Texture2D" uid="uid://c0v2qhye7ri46" path="res://game/assets/sprites/old/dancer.jpg" id="2_j7uxl"]
-[ext_resource type="PackedScene" uid="uid://b50lde58abc77" path="res://game/scenes/prefabs/ui/settings_container.tscn" id="3_mybpd"]
-[ext_resource type="PackedScene" uid="uid://bynx5suv1li65" path="res://game/scenes/prefabs/ui/main_container.tscn" id="3_tkvlc"]
-[ext_resource type="PackedScene" uid="uid://bmm1cl7b3mep7" path="res://game/scenes/prefabs/ui/highscore.tscn" id="4_1thjp"]
+[ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/prefabs/ui/main_menu_ui.tscn" id="1_ft6gk"]
+[ext_resource type="PackedScene" uid="uid://p27fhtm5cx4i" path="res://game/scenes/prefabs/sprites/sky.tscn" id="2_8jq4q"]
+[ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="2_ha33n"]
+[ext_resource type="PackedScene" uid="uid://b2aol0wuh50lr" path="res://game/scenes/prefabs/sprites/ground.tscn" id="3_dm3qj"]
+[ext_resource type="Resource" uid="uid://c163lluc7qonj" path="res://game/assets/audio/ui_song.tres" id="3_nj2br"]
+[ext_resource type="Texture2D" uid="uid://bnbksoecxk2ww" path="res://game/assets/sprites/old/ciel.jpg" id="5_j0hxl"]
+[ext_resource type="Texture2D" uid="uid://d20i5s1b1k18e" path="res://game/assets/sprites/gamejamasset.png" id="6_nwx84"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0avx"]
-bg_color = Color(0.223529, 0.223529, 0.223529, 1)
-
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("mainMenuContainer", "highscoreMenu")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
+[node name="main_menu" type="Node2D" node_paths=PackedStringArray("ui")]
 script = ExtResource("1_3tdli")
-mainMenuContainer = NodePath("TextureRect/MainPanelContainer/MainMarginContainer/MainContainer")
-highscoreMenu = NodePath("TextureRect/MainPanelContainer/MainMarginContainer/highscore")
+ui = NodePath("CanvasLayer/MainMenuUI")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_j7uxl")
+[node name="conductor" parent="." instance=ExtResource("2_ha33n")]
+_song = ExtResource("3_nj2br")
 
-[node name="MainPanelContainer" type="PanelContainer" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = -239.0
-offset_right = 234.0
-offset_bottom = 239.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i0avx")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MainMarginContainer" type="MarginContainer" parent="TextureRect/MainPanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+[node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("1_ft6gk")]
 
-[node name="MainContainer" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("settingsNode", "mainMenu") instance=ExtResource("3_tkvlc")]
-layout_mode = 2
-settingsNode = NodePath("../settings_container")
-mainMenu = NodePath("../../../..")
+[node name="Sky" parent="." instance=ExtResource("2_8jq4q")]
 
-[node name="settings_container" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl") instance=ExtResource("3_mybpd")]
+[node name="Ground" parent="." instance=ExtResource("3_dm3qj")]
+
+[node name="SkyBright" type="Sprite2D" parent="."]
 visible = false
-layout_mode = 2
-mainMenuControl = NodePath("../MainContainer")
+position = Vector2(517.5, 295)
+scale = Vector2(0.557813, 0.585185)
+texture = ExtResource("5_j0hxl")
 
-[node name="highscore" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl", "mainMenu") instance=ExtResource("4_1thjp")]
+[node name="GroundBright" type="Sprite2D" parent="."]
 visible = false
-layout_mode = 2
-mainMenuControl = NodePath("../MainContainer")
-mainMenu = NodePath("../../../..")
+position = Vector2(510, 438)
+scale = Vector2(0.301, 0.301)
+texture = ExtResource("6_nwx84")
+region_enabled = true
+region_rect = Rect2(2221, 1873, 3753, 1098)

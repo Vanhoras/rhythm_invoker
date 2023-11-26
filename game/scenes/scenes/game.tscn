@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://db0syxrp16nu6"]
+[gd_scene load_steps=16 format=3 uid="uid://db0syxrp16nu6"]
 
 [ext_resource type="Script" path="res://game/scripts/Level.cs" id="1_q4mox"]
 [ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="1_vnpu0"]
-[ext_resource type="Resource" uid="uid://c163lluc7qonj" path="res://game/assets/audio/Song.tres" id="2_gtybg"]
+[ext_resource type="Script" path="res://game/scenes/prefabs/gameplay/score/ScoreManager.cs" id="2_02em3"]
 [ext_resource type="PackedScene" uid="uid://p27fhtm5cx4i" path="res://game/scenes/prefabs/sprites/sky.tscn" id="3_hfi6w"]
+[ext_resource type="Resource" uid="uid://c4newkjnpae2" path="res://game/assets/audio/main_song.tres" id="3_se7ub"]
 [ext_resource type="PackedScene" uid="uid://ca7fka7qq8hsy" path="res://game/scenes/prefabs/sprites/death.tscn" id="4_mkg74"]
 [ext_resource type="PackedScene" uid="uid://b2aol0wuh50lr" path="res://game/scenes/prefabs/sprites/ground.tscn" id="5_oqscq"]
 [ext_resource type="PackedScene" uid="uid://cir6gup4is3fd" path="res://game/scenes/prefabs/gameplay/dancer.tscn" id="6_ghgwu"]
@@ -19,8 +20,11 @@
 script = ExtResource("1_q4mox")
 conductor = NodePath("conductor")
 
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("2_02em3")
+
 [node name="conductor" parent="." instance=ExtResource("1_vnpu0")]
-_song = ExtResource("2_gtybg")
+_song = ExtResource("3_se7ub")
 
 [node name="Sky" parent="." instance=ExtResource("3_hfi6w")]
 

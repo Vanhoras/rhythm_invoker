@@ -6,7 +6,7 @@ public partial class HighscoreMenu : Control
 	private Control mainMenuControl;
 
 	[Export]
-	private MainMenu mainMenu;
+	private MainMenuUI mainMenuUI;
 	
 	public void GoBackToMenu()
 	{
@@ -16,6 +16,6 @@ public partial class HighscoreMenu : Control
 
 	public void PlayGame()
 	{
-        mainMenu.PlayGame();
+        mainMenuUI.PlayGame();
     }
 }

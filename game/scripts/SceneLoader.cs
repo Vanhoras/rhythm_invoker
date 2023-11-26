@@ -6,9 +6,6 @@ public partial class SceneLoader : Node
     private Node mainNode;
 
     [Export]
-    private CanvasLayer canvas;
-
-    [Export]
     private PackedScene mainMenuPackedScene;
 
     [Export]
@@ -26,7 +23,7 @@ public partial class SceneLoader : Node
     public void LoadMainMenu()
     {
         Node instance = mainMenuPackedScene.Instantiate();
-        canvas.AddChild(instance);
+        mainNode.AddChild(instance);
 
         mainMenu = instance;
         ((MainMenu)mainMenu).Instantiate(this, true);
@@ -36,7 +33,6 @@ public partial class SceneLoader : Node
 
     public void LoadLevel()
     {
-
         Node instance = gamePackedScene.Instantiate();
         mainNode.AddChild(instance);
 

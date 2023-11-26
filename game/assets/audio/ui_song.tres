@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://c163lluc7qonj"]
+
+[ext_resource type="AudioStream" uid="uid://cojvmjjprimty" path="res://game/assets/audio/OneButtonBeatTest_101BPM.mp3" id="1_f8pl3"]
+[ext_resource type="Script" path="res://game/scripts/rhythm/Song.cs" id="3_8mamx"]
+
+[resource]
+script = ExtResource("3_8mamx")
+_audioStream = ExtResource("1_f8pl3")
+_bpm = 101
+_beatPerMeasure = 4
+_beatsBeforeStart = 0
+_notes = Array[Object]([])

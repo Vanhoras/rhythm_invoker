@@ -6,7 +6,7 @@ public partial class MainMenuContainer : Control
 	private Control settingsNode;
 
 	[Export]
-	private MainMenu mainMenu;
+	private MainMenuUI mainMenuUI;
 
 	public void QuitGame()
 	{
@@ -21,6 +21,6 @@ public partial class MainMenuContainer : Control
 
 	public void PlayGame()
 	{
-        mainMenu.PlayGame();
+        mainMenuUI.PlayGame();
     }
 }
