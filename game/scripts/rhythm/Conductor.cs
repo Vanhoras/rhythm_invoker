@@ -47,6 +47,8 @@ public partial class Conductor : AudioStreamPlayer
         PlaySong(Song);
 
         this.Finished += SongFinished;
+
+        CreateNotes();
     }
       
     public override void _PhysicsProcess(double delta)
@@ -167,7 +169,7 @@ public partial class Conductor : AudioStreamPlayer
 		}
 
 		EmitSignal(SignalName.OnBeat);
-        // GD.Print($"Beat _currentBeatTotal {_currentBeatTotal} ");
+        GD.Print($"Beat _currentBeatTotal {_currentBeatTotal} ");
     }
 
 	private double CalculateSongPosition()
@@ -185,5 +187,48 @@ public partial class Conductor : AudioStreamPlayer
         _songPosition = songPosition;
 
 		return songPosition;
+    }
+
+    private void CreateNotes()
+    {
+        Song.Notes = new ();
+
+        for (int i = 5; i <= 12; i++)
+        {
+            Note note = new Note();
+            note.Initialize(i - 4, i, false);
+            Song.Notes.Add(note);
+        }
+
+
+        for (int i = 24; i <= 384; i+=4)
+        {
+            Note note1 = new Note ();
+            note1.Initialize(4, i, false);
+            Song.Notes.Add(note1);
+
+            Note note2 = new Note();
+            note2.Initialize(5, i, true);
+            Song.Notes.Add(note2);
+        }
+
+        RandomNumberGenerator random = new RandomNumberGenerator();
+        
+
+        int j = 12;
+        while (j < 383)
+        {
+            random.Randomize();
+            j += random.RandiRange(1, 8);
+            
+            int k = random.RandiRange(1, 8);
+
+            if (j >= 24 && (j % 4) != 0)
+            {
+                Note note = new Note();
+                note.Initialize(k, j, false);
+                Song.Notes.Add(note);
+            }
+        }
     }
 }

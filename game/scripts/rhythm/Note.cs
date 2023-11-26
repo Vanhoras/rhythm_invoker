@@ -17,4 +17,11 @@ public partial class Note : Resource
     private bool _halfBeat;
 
     public bool HalfBeat { get { return _halfBeat; } }
+
+    public void Initialize(int spawnIndex, int spawnOnBeat, bool halfBeat)
+    {
+        this._spawnIndex = spawnIndex;
+        this._spawnOnBeat = spawnOnBeat;
+        this._halfBeat = halfBeat;
+    }
 }

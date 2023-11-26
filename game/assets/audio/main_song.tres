@@ -1,80 +1,7 @@
-[gd_resource type="Resource" script_class="Song" load_steps=16 format=3 uid="uid://c4newkjnpae2"]
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://c4newkjnpae2"]
 
 [ext_resource type="AudioStream" uid="uid://dgxkjqkmiufxk" path="res://game/assets/audio/RhythmInvoker_101BPM_MUSIC.ogg" id="1_q1bhj"]
-[ext_resource type="Script" path="res://game/scripts/rhythm/Note.cs" id="2_5jnqq"]
 [ext_resource type="Script" path="res://game/scripts/rhythm/Song.cs" id="3_s661o"]
-
-[sub_resource type="Resource" id="Resource_qforh"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 1
-_spawnOnBeat = 1
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_mcar3"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 2
-_spawnOnBeat = 2
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_uhcxn"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 3
-_spawnOnBeat = 3
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_d247s"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 4
-_spawnOnBeat = 4
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_dtoi3"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 5
-_spawnOnBeat = 5
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_l1rvp"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 6
-_spawnOnBeat = 6
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_3pcfy"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 7
-_spawnOnBeat = 7
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_i585f"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 4
-_spawnOnBeat = 8
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_hm7j6"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 4
-_spawnOnBeat = 8
-_halfBeat = true
-
-[sub_resource type="Resource" id="Resource_v0v0c"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 3
-_spawnOnBeat = 11
-_halfBeat = false
-
-[sub_resource type="Resource" id="Resource_x6fyo"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 3
-_spawnOnBeat = 1
-_halfBeat = true
-
-[sub_resource type="Resource" id="Resource_yc7oj"]
-script = ExtResource("2_5jnqq")
-_spawnIndex = 4
-_spawnOnBeat = 2
-_halfBeat = true
 
 [resource]
 script = ExtResource("3_s661o")
@@ -82,4 +9,4 @@ _audioStream = ExtResource("1_q1bhj")
 _bpm = 101
 _beatPerMeasure = 4
 _beatsBeforeStart = 4
-_notes = Array[Object]([SubResource("Resource_qforh"), SubResource("Resource_mcar3"), SubResource("Resource_uhcxn"), SubResource("Resource_d247s"), SubResource("Resource_dtoi3"), SubResource("Resource_l1rvp"), SubResource("Resource_3pcfy"), SubResource("Resource_i585f"), SubResource("Resource_hm7j6"), SubResource("Resource_v0v0c"), SubResource("Resource_x6fyo"), SubResource("Resource_yc7oj")])
+_notes = Array[Object]([])

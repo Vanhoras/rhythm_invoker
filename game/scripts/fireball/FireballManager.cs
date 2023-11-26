@@ -113,7 +113,6 @@ public partial class FireballManager : Node
 
     private void OnHalfBeat()
     {
-        GD.Print("OnHalfBeat");
         int currentBeatTotal = conductor.CurrentBeatTotal;
 
         Array<Note> notes = conductor.Song.Notes;
@@ -134,7 +133,7 @@ public partial class FireballManager : Node
         Array<Note> notes = conductor.Song.Notes;
 
         for (int i = 0; i < notes.Count; i++) { 
-            if (notes[i].SpawnOnBeat == currentBeatTotal && !notes[i].HalfBeat)
+            if ((notes[i].SpawnOnBeat - 4) == currentBeatTotal && !notes[i].HalfBeat)
             {
                 SpawnFireball(notes[i].SpawnIndex);
             }

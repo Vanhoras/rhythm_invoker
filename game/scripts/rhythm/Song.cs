@@ -40,7 +40,5 @@ public partial class Song : Resource
     }
 
     [Export]
-    private Array<Note> _notes;
-
-    public Array<Note> Notes { get { return _notes; } }
+    public Array<Note> Notes;
 }

@@ -126,8 +126,8 @@ conductor = NodePath("../conductor")
 hitNotification = NodePath("../HitNotification")
 spawnpoints = [NodePath("../Spawnpoints/Spawnpoint0"), NodePath("../Spawnpoints/Spawnpoint1"), NodePath("../Spawnpoints/Spawnpoint2"), NodePath("../Spawnpoints/Spawnpoint3"), NodePath("../Spawnpoints/Spawnpoint4"), NodePath("../Spawnpoints/Spawnpoint5"), NodePath("../Spawnpoints/Spawnpoint6"), NodePath("../Spawnpoints/Spawnpoint7")]
 fireballPrefab = ExtResource("14_buyhf")
-lengthToPerfect = 185.0
-lengthToMissed = 125.0
+lengthToPerfect = 175.0
+lengthToMissed = 115.0
 perfectZoneTimeInBeats = 0.25
 okZoneTimeInBeats = 0.5
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b50lde58abc77"]
+[gd_scene load_steps=5 format=3 uid="uid://b50lde58abc77"]
 
 [ext_resource type="FontFile" uid="uid://c6bou33d7457q" path="res://game/assets/fonts/Viking Medium.ttf" id="1_b4ymg"]
 [ext_resource type="Script" path="res://game/scripts/ui/SettingsMenu.cs" id="1_vcq4k"]
 [ext_resource type="PackedScene" uid="uid://cd4k7gwpjkgc1" path="res://game/scenes/prefabs/ui/components/volume_slider.tscn" id="2_67q8r"]
 [ext_resource type="PackedScene" uid="uid://ecgtanpgqqt4" path="res://game/scenes/prefabs/ui/components/input_assigner.tscn" id="3_hj1yh"]
-[ext_resource type="PackedScene" uid="uid://c6rwd334u172y" path="res://game/scenes/prefabs/ui/components/difficulty_settings.tscn" id="4_kk0f1"]
 
 [node name="settings_container" type="VBoxContainer"]
 offset_right = 40.0
@@ -43,15 +42,6 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="DifficultyLabel" type="RichTextLabel" parent="SettingsContainer/labels"]
-visible = false
-layout_mode = 2
-bbcode_enabled = true
-text = "DIFFICULTY"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="settings" type="VBoxContainer" parent="SettingsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -62,16 +52,6 @@ layout_mode = 2
 
 [node name="InputAssigner" parent="SettingsContainer/settings" instance=ExtResource("3_hj1yh")]
 layout_mode = 2
-
-[node name="difficulty_settings" parent="SettingsContainer/settings" instance=ExtResource("4_kk0f1")]
-visible = false
-layout_mode = 2
-
-[node name="InputCalibrationButton" type="Button" parent="."]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_b4ymg")
-theme_override_font_sizes/font_size = 20
-text = "INPUT CALIBRATION"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 2
