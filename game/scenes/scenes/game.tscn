@@ -31,15 +31,17 @@ _song = ExtResource("3_se7ub")
 
 [node name="Sky" parent="." instance=ExtResource("3_hfi6w")]
 
-[node name="Torch2" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+[node name="Torch2" parent="." node_paths=PackedStringArray("conductor", "fireballManager") instance=ExtResource("17_cgo0e")]
 position = Vector2(260, 450)
 scale = Vector2(0.2, 0.2)
 conductor = NodePath("../conductor")
+fireballManager = NodePath("../FireballManager")
 
-[node name="Torch3" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+[node name="Torch3" parent="." node_paths=PackedStringArray("conductor", "fireballManager") instance=ExtResource("17_cgo0e")]
 position = Vector2(773, 428)
 scale = Vector2(0.22, 0.22)
 conductor = NodePath("../conductor")
+fireballManager = NodePath("../FireballManager")
 
 [node name="Ground" parent="." instance=ExtResource("5_oqscq")]
 
@@ -93,15 +95,17 @@ texture = ExtResource("9_cnxfr")
 region_enabled = true
 region_rect = Rect2(70, 326, 477, 88)
 
-[node name="Torch" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+[node name="Torch" parent="." node_paths=PackedStringArray("conductor", "fireballManager") instance=ExtResource("17_cgo0e")]
 position = Vector2(44, 533)
 scale = Vector2(0.24, 0.24)
 conductor = NodePath("../conductor")
+fireballManager = NodePath("../FireballManager")
 
-[node name="Torch4" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("17_cgo0e")]
+[node name="Torch4" parent="." node_paths=PackedStringArray("conductor", "fireballManager") instance=ExtResource("17_cgo0e")]
 position = Vector2(971, 579)
 scale = Vector2(-0.32, 0.32)
 conductor = NodePath("../conductor")
+fireballManager = NodePath("../FireballManager")
 
 [node name="Circle" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("9_hgr8o")]
 position = Vector2(505, 348)
@@ -123,7 +127,7 @@ hitNotification = NodePath("../HitNotification")
 spawnpoints = [NodePath("../Spawnpoints/Spawnpoint0"), NodePath("../Spawnpoints/Spawnpoint1"), NodePath("../Spawnpoints/Spawnpoint2"), NodePath("../Spawnpoints/Spawnpoint3"), NodePath("../Spawnpoints/Spawnpoint4"), NodePath("../Spawnpoints/Spawnpoint5"), NodePath("../Spawnpoints/Spawnpoint6"), NodePath("../Spawnpoints/Spawnpoint7")]
 fireballPrefab = ExtResource("12_h1lqj")
 lengthToPerfect = 185.0
-lengthToMissed = 145.0
+lengthToMissed = 125.0
 perfectZoneTimeInBeats = 0.25
 okZoneTimeInBeats = 0.5
 

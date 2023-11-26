@@ -1,11 +1,13 @@
 using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
-using static System.Formats.Asn1.AsnWriter;
 
 public partial class FireballManager : Node
 {
-	[Export]
+    [Signal]
+    public delegate void OnPerfectEventHandler();
+
+    [Export]
 	private Node fireballBaseNode;
 
     [Export]
@@ -52,6 +54,7 @@ public partial class FireballManager : Node
         circleCenter = circle.GlobalPosition;
 
         conductor.OnBeat += OnBeat;
+        conductor.OnHalfBeat += OnHalfBeat;
 
         perfectZoneTime = (float)(perfectZoneTimeInBeats * conductor.Song.SPB);
         okZoneTime = (float)(okZoneTimeInBeats * conductor.Song.SPB);
@@ -95,6 +98,7 @@ public partial class FireballManager : Node
 
                 hitNotification.ShowHitNotification(HitType.OK);
                 scoreManager.HitNote(HitType.OK);
+                EmitSignal(SignalName.OnPerfect);
             } else
             {
                 fireballs[closestIndex].QueueFree();
@@ -102,6 +106,23 @@ public partial class FireballManager : Node
 
                 hitNotification.ShowHitNotification(HitType.PERFECT);
                 scoreManager.HitNote(HitType.PERFECT);
+                EmitSignal(SignalName.OnPerfect);
+            }
+        }
+    }
+
+    private void OnHalfBeat()
+    {
+        GD.Print("OnHalfBeat");
+        int currentBeatTotal = conductor.CurrentBeatTotal;
+
+        Array<Note> notes = conductor.Song.Notes;
+
+        for (int i = 0; i < notes.Count; i++)
+        {
+            if (notes[i].SpawnOnBeat == currentBeatTotal && notes[i].HalfBeat)
+            {
+                SpawnFireball(notes[i].SpawnIndex);
             }
         }
     }
@@ -113,7 +134,7 @@ public partial class FireballManager : Node
         Array<Note> notes = conductor.Song.Notes;
 
         for (int i = 0; i < notes.Count; i++) { 
-            if (notes[i].SpawnOnBeat == currentBeatTotal)
+            if (notes[i].SpawnOnBeat == currentBeatTotal && !notes[i].HalfBeat)
             {
                 SpawnFireball(notes[i].SpawnIndex);
             }

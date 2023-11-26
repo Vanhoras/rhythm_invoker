@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpdsp4b2vu53i"]
+[gd_scene load_steps=11 format=3 uid="uid://bpdsp4b2vu53i"]
 
 [ext_resource type="Script" path="res://game/scripts/ui/MainMenu.cs" id="1_3tdli"]
 [ext_resource type="PackedScene" uid="uid://cbdki1u7d7qis" path="res://game/scenes/prefabs/ui/main_menu_ui.tscn" id="1_ft6gk"]
@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://c163lluc7qonj" path="res://game/assets/audio/ui_song.tres" id="3_nj2br"]
 [ext_resource type="Texture2D" uid="uid://bnbksoecxk2ww" path="res://game/assets/sprites/old/ciel.jpg" id="5_j0hxl"]
 [ext_resource type="Texture2D" uid="uid://d20i5s1b1k18e" path="res://game/assets/sprites/gamejamasset.png" id="6_nwx84"]
+[ext_resource type="PackedScene" uid="uid://3c6r11rax0yd" path="res://game/scenes/prefabs/gameplay/torch.tscn" id="9_a77c0"]
+[ext_resource type="Texture2D" uid="uid://cpdbaebslht08" path="res://game/assets/sprites/bones.png" id="10_xn3q8"]
 
 [node name="main_menu" type="Node2D" node_paths=PackedStringArray("ui")]
 script = ExtResource("1_3tdli")
@@ -21,6 +23,14 @@ _song = ExtResource("3_nj2br")
 [node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("1_ft6gk")]
 
 [node name="Sky" parent="." instance=ExtResource("2_8jq4q")]
+
+[node name="Torch3" parent="." instance=ExtResource("9_a77c0")]
+position = Vector2(260, 450)
+scale = Vector2(0.2, 0.2)
+
+[node name="Torch4" parent="." instance=ExtResource("9_a77c0")]
+position = Vector2(773, 428)
+scale = Vector2(0.22, 0.22)
 
 [node name="Ground" parent="." instance=ExtResource("3_dm3qj")]
 
@@ -37,3 +47,57 @@ scale = Vector2(0.301, 0.301)
 texture = ExtResource("6_nwx84")
 region_enabled = true
 region_rect = Rect2(2221, 1873, 3753, 1098)
+
+[node name="Torch" parent="." instance=ExtResource("9_a77c0")]
+position = Vector2(44, 533)
+scale = Vector2(0.24, 0.24)
+
+[node name="Torch2" parent="." instance=ExtResource("9_a77c0")]
+position = Vector2(971, 579)
+scale = Vector2(-0.32, 0.32)
+
+[node name="debriet" type="Node2D" parent="."]
+
+[node name="debriet1" type="Sprite2D" parent="debriet"]
+position = Vector2(151, 528)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_xn3q8")
+region_enabled = true
+region_rect = Rect2(215, 85, 195, 197)
+
+[node name="debriet2" type="Sprite2D" parent="debriet"]
+position = Vector2(290, 462)
+rotation = 1.309
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_xn3q8")
+region_enabled = true
+region_rect = Rect2(70, 326, 477, 88)
+
+[node name="debriet3" type="Sprite2D" parent="debriet"]
+position = Vector2(188, 524)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_xn3q8")
+region_enabled = true
+region_rect = Rect2(121, 456, 128, 107)
+
+[node name="debriet4" type="Sprite2D" parent="debriet"]
+position = Vector2(895, 468)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_xn3q8")
+region_enabled = true
+region_rect = Rect2(322, 475, 196, 103)
+
+[node name="debriet5" type="Sprite2D" parent="debriet"]
+position = Vector2(868, 214)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_xn3q8")
+region_enabled = true
+region_rect = Rect2(215, 85, 195, 197)
+
+[node name="debriet6" type="Sprite2D" parent="debriet"]
+position = Vector2(943, 423)
+rotation = 1.309
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_xn3q8")
+region_enabled = true
+region_rect = Rect2(70, 326, 477, 88)

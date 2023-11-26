@@ -6,6 +6,9 @@ public partial class Torch : Node
     private Conductor conductor;
 
     [Export]
+    private FireballManager fireballManager;
+
+    [Export]
     private AnimatedSprite2D fire;
 
     [Export]
@@ -34,7 +37,7 @@ public partial class Torch : Node
 
         flareDuration = (float)(flareDurationInBeats * conductor.Song.SPB);
 
-        GD.Print(Name);
+        fireballManager.OnPerfect += OnPerfect;
     }
 
 	public override void _Process(double delta)
@@ -49,15 +52,7 @@ public partial class Torch : Node
         }
     }
 
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        if (@event.IsActionPressed("button"))
-        {
-            OnButtonPress();
-        }
-    }
-
-    private void OnButtonPress()
+    private void OnPerfect()
     {
         fire.Animation = "flare";
 
@@ -78,7 +73,6 @@ public partial class Torch : Node
 
     private void OnBeat()
     {
-        GD.Print(Name + "OnBeat");
         smallFireCurrentFrame = (smallFireCurrentFrame + 1) % smallFireAnimationFrames;
         largeFireCurrentFrame = (largeFireCurrentFrame + 1) % largeFireAnimationFrames;
 

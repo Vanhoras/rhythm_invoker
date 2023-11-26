@@ -7,6 +7,9 @@ public partial class Conductor : AudioStreamPlayer
     public delegate void OnBeatEventHandler();
 
     [Signal]
+    public delegate void OnHalfBeatEventHandler();
+
+    [Signal]
     public delegate void OnMeasureEventHandler();
 
     [Export]
@@ -36,6 +39,8 @@ public partial class Conductor : AudioStreamPlayer
     private bool _playing;
     public new bool Playing { get { return _playing; } }
 
+    private bool invokedHalfBeat;
+
     public override void _Ready()
 	{
 		base._Ready();
@@ -54,6 +59,12 @@ public partial class Conductor : AudioStreamPlayer
             {
                 
                 int positionInBeats = (int)Math.Floor(_timer / Song.SPB);
+
+                if (!invokedHalfBeat && ((_timer % Song.SPB) > Song.SPB / 2))
+                {
+                    EmitSignal(SignalName.OnHalfBeat);
+                    invokedHalfBeat = true;
+                }
 
                 if (positionInBeats > _currentBeatTotal)
                 {
@@ -75,6 +86,12 @@ public partial class Conductor : AudioStreamPlayer
             CalculateSongPosition();
 
             int positionInBeats = (int)Math.Floor(_songPosition / Song.SPB);
+
+            if (!invokedHalfBeat && ((_songPosition % Song.SPB) > Song.SPB / 2))
+            {
+                EmitSignal(SignalName.OnHalfBeat);
+                invokedHalfBeat = true;
+            }
 
             if (positionInBeats > _currentBeatTotal - Song.BeatsBeforeStart)
             {
@@ -139,6 +156,7 @@ public partial class Conductor : AudioStreamPlayer
 	{
 		_currentBeat++;
         _currentBeatTotal++;
+        invokedHalfBeat = false;
 
 
         if (_currentBeat > _song.BeatPerMeasure)
