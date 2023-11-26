@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk16dh1fo4eu"]
+
+[ext_resource type="Script" path="res://game/scripts/effects/HitNotification.cs" id="1_b20gw"]
+[ext_resource type="FontFile" uid="uid://c6bou33d7457q" path="res://game/assets/fonts/Viking Medium.ttf" id="1_ijq2c"]
+
+[node name="HitNotification" type="Node2D" node_paths=PackedStringArray("okLabel", "perfectLabel", "missedLabel")]
+script = ExtResource("1_b20gw")
+okLabel = NodePath("OkLabel")
+perfectLabel = NodePath("PerfectLabel")
+missedLabel = NodePath("MissedLabel")
+showHitNotificationInBeats = 1.0
+
+[node name="OkLabel" type="Label" parent="."]
+visible = false
+offset_left = 55.0
+offset_right = 114.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.937255, 0.733333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ijq2c")
+theme_override_font_sizes/font_size = 30
+text = "OK"
+
+[node name="PerfectLabel" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0.952941, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ijq2c")
+theme_override_font_sizes/font_size = 30
+text = "PERFECT"
+
+[node name="MissedLabel" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_right = 158.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ijq2c")
+theme_override_font_sizes/font_size = 30
+text = "MISSED"

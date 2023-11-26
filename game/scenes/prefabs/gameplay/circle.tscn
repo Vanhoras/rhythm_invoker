@@ -57,6 +57,7 @@ script = ExtResource("1_s1m5q")
 innerCircle = NodePath("InnerCircle")
 outerCircle = NodePath("OuterCircle")
 rotationSpeed = 0.4
+flareDurationInBeats = 0.5
 
 [node name="OuterCircle" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.324, 0.324)

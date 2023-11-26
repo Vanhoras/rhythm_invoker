@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://db0syxrp16nu6"]
+[gd_scene load_steps=15 format=3 uid="uid://db0syxrp16nu6"]
 
 [ext_resource type="Script" path="res://game/scripts/Level.cs" id="1_q4mox"]
 [ext_resource type="PackedScene" uid="uid://44mheygcl77x" path="res://game/scenes/prefabs/audio/conductor.tscn" id="1_vnpu0"]
@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cir6gup4is3fd" path="res://game/scenes/prefabs/gameplay/dancer.tscn" id="6_ghgwu"]
 [ext_resource type="PackedScene" uid="uid://bm4kv78qclcua" path="res://game/scenes/prefabs/gameplay/circle.tscn" id="9_hgr8o"]
 [ext_resource type="PackedScene" uid="uid://d37hgx0o2bd1c" path="res://game/scenes/prefabs/tools/distance_measurer.tscn" id="10_4rai8"]
+[ext_resource type="Script" path="res://game/scripts/fireball/FireballManager.cs" id="11_cbg53"]
 [ext_resource type="PackedScene" uid="uid://omf28mlqlnkf" path="res://game/scenes/prefabs/gameplay/fireball_2.tscn" id="12_h1lqj"]
-[ext_resource type="Script" path="res://game/scripts/fireball/Spawner.cs" id="12_ijag0"]
 [ext_resource type="PackedScene" uid="uid://ux41ncvglnf3" path="res://game/scenes/prefabs/gameplay/spawner.tscn" id="13_8vrqy"]
 [ext_resource type="Script" path="res://game/scripts/tool/DistanceMeasurer.cs" id="13_atvcv"]
+[ext_resource type="PackedScene" uid="uid://dk16dh1fo4eu" path="res://game/scenes/prefabs/gameplay/hit_notification.tscn" id="14_krehh"]
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("conductor")]
 script = ExtResource("1_q4mox")
@@ -42,56 +43,63 @@ position = Vector2(508, 344)
 scale = Vector2(0.8, 0.8)
 conductor = NodePath("../conductor")
 
-[node name="Spawner" parent="." node_paths=PackedStringArray("fireballBaseNode", "spawnpoints", "conductor", "circle") instance=ExtResource("13_8vrqy")]
-script = ExtResource("12_ijag0")
+[node name="FireballManager" parent="." node_paths=PackedStringArray("fireballBaseNode", "hitNotification", "spawnpoints", "conductor", "circle") instance=ExtResource("13_8vrqy")]
+script = ExtResource("11_cbg53")
 fireballBaseNode = NodePath("../Fireballs")
 fireballPrefab = ExtResource("12_h1lqj")
-spawnpoints = [NodePath("../Spawnpoints/Spawnpoint1"), NodePath("../Spawnpoints/Spawnpoint2"), NodePath("../Spawnpoints/Spawnpoint3"), NodePath("../Spawnpoints/Spawnpoint4"), NodePath("../Spawnpoints/Spawnpoint5"), NodePath("../Spawnpoints/Spawnpoint6"), NodePath("../Spawnpoints/Spawnpoint7"), NodePath("../Spawnpoints/Spawnpoint8")]
+hitNotification = NodePath("../HitNotification")
+spawnpoints = [NodePath("../Spawnpoints/Spawnpoint0"), NodePath("../Spawnpoints/Spawnpoint1"), NodePath("../Spawnpoints/Spawnpoint2"), NodePath("../Spawnpoints/Spawnpoint3"), NodePath("../Spawnpoints/Spawnpoint4"), NodePath("../Spawnpoints/Spawnpoint5"), NodePath("../Spawnpoints/Spawnpoint6"), NodePath("../Spawnpoints/Spawnpoint7")]
 conductor = NodePath("../conductor")
 circle = NodePath("../Circle")
 lengthToPerfect = 185.0
 lengthToMissed = 145.0
+perfectZoneTimeInBeats = 0.25
+okZoneTimeInBeats = 0.5
 
 [node name="Fireballs" type="Node2D" parent="."]
 
 [node name="Spawnpoints" type="Node2D" parent="."]
 
-[node name="Spawnpoint1" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
-position = Vector2(644, -27)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
-
-[node name="Spawnpoint2" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
-position = Vector2(888, -25)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
-
-[node name="Spawnpoint3" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
-position = Vector2(1051, 163)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
-
-[node name="Spawnpoint4" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
-position = Vector2(1052, 348)
-script = ExtResource("13_atvcv")
-targetNode = NodePath("../../Circle")
-
-[node name="Spawnpoint5" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint0" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
 position = Vector2(-22, 351)
 script = ExtResource("13_atvcv")
 targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint6" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint1" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
 position = Vector2(-23, 148)
 script = ExtResource("13_atvcv")
 targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint7" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint2" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
 position = Vector2(173, -23)
 script = ExtResource("13_atvcv")
 targetNode = NodePath("../../Circle")
 
-[node name="Spawnpoint8" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+[node name="Spawnpoint3" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
 position = Vector2(402, -24)
 script = ExtResource("13_atvcv")
 targetNode = NodePath("../../Circle")
+
+[node name="Spawnpoint4" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+position = Vector2(644, -27)
+script = ExtResource("13_atvcv")
+targetNode = NodePath("../../Circle")
+
+[node name="Spawnpoint5" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+position = Vector2(888, -25)
+script = ExtResource("13_atvcv")
+targetNode = NodePath("../../Circle")
+
+[node name="Spawnpoint6" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+position = Vector2(1051, 163)
+script = ExtResource("13_atvcv")
+targetNode = NodePath("../../Circle")
+
+[node name="Spawnpoint7" type="Node2D" parent="Spawnpoints" node_paths=PackedStringArray("targetNode")]
+position = Vector2(1052, 348)
+script = ExtResource("13_atvcv")
+targetNode = NodePath("../../Circle")
+
+[node name="HitNotification" parent="." node_paths=PackedStringArray("conductor") instance=ExtResource("14_krehh")]
+position = Vector2(421, 528)
+conductor = NodePath("../conductor")

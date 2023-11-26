@@ -16,6 +16,11 @@ script = ExtResource("1_npfro")
 layout_mode = 2
 theme_override_constants/separation = 40
 
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
 [node name="labels" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -51,18 +56,25 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_1dvup")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "5000"
+text = "[center]5000"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="HighScoreValue" type="RichTextLabel" parent="HBoxContainer/values"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_1dvup")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "10000"
+text = "[center]10000"
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
+
+[node name="Spacer2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
 
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 2
@@ -76,4 +88,5 @@ theme_override_fonts/font = ExtResource("1_1dvup")
 theme_override_font_sizes/font_size = 20
 text = "Back To Menu"
 
+[connection signal="pressed" from="RetryButton" to="." method="PlayGame"]
 [connection signal="pressed" from="MainMenuButton" to="." method="GoBackToMenu"]

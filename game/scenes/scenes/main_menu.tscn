@@ -48,10 +48,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_i0avx")
 
 [node name="MainMarginContainer" type="MarginContainer" parent="TextureRect/MainPanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="MainContainer" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("settingsNode", "mainMenu") instance=ExtResource("3_tkvlc")]
 layout_mode = 2

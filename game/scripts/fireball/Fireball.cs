@@ -2,6 +2,9 @@ using Godot;
 
 public partial class Fireball : Node2D
 {
+    [Signal]
+    public delegate void OnFireballMissedEventHandler(int ID);
+
     [Export]
     private Sprite2D sprite;
 
@@ -10,6 +13,10 @@ public partial class Fireball : Node2D
 
     [Export]
     private double beatsTillMissed;
+
+    private int _id;
+
+    public int ID { get { return _id; } }
 
     private Conductor conductor;
 
@@ -26,8 +33,11 @@ public partial class Fireball : Node2D
     private double timeNeededToMissed;
     private double elapsedTime = 0;
 
-	public void Initialize(Conductor conductor, Vector2 circleCenter, float lengthToPerfect, float lengthToMissed)
+    
+
+	public void Initialize(int id, Conductor conductor, Vector2 circleCenter, float lengthToPerfect, float lengthToMissed)
 	{
+        this._id = id;
         this.conductor = conductor;
         this.circleCenter = circleCenter;
         this.lengthToPerfect = lengthToPerfect;
@@ -82,10 +92,26 @@ public partial class Fireball : Node2D
 
             GlobalPosition = intermediatePosition;
 
-            GD.Print($"globalPosition {GlobalPosition} pointInBetween {(float)(baseTime / effectiveElapsedTime)} timeNeededToMissed - timeNeededToPerfect {timeNeededToMissed - timeNeededToPerfect} elapsedTime - timeNeededToPerfect {elapsedTime - timeNeededToPerfect} ");
+            // GD.Print($"globalPosition {GlobalPosition} pointInBetween {(float)(baseTime / effectiveElapsedTime)} timeNeededToMissed - timeNeededToPerfect {timeNeededToMissed - timeNeededToPerfect} elapsedTime - timeNeededToPerfect {elapsedTime - timeNeededToPerfect} ");
         } else
 		{
-            QueueFree();
-		}
+            Miss();
+        }
+    }
+
+    public float GetTimeDistanceFromPerfect()
+    {
+        return (float) Mathf.Abs(timeNeededToPerfect - elapsedTime);
+    }
+
+    public float GetTimeDistanceFromMissed()
+    {
+        return (float)Mathf.Abs(timeNeededToMissed - elapsedTime);
+    }
+
+    public void Miss()
+    {
+        EmitSignal(SignalName.OnFireballMissed, ID);
+        QueueFree();
     }
 }

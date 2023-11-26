@@ -15,12 +15,19 @@ public partial class Circle : Node2D
     [Export]
     private float rotationSpeed;
 
+    [Export]
+    private float flareDurationInBeats;
+    private float flareDuration;
+
 
     private int innerCircleAnimationFrames;
 	private int innerCircleCurrentFrame;
 	
 	private int outerCircleAnimationFrames;
     private int outerCircleCurrentFrame;
+
+    private bool flaring = false;
+    private float currentFlareDuration;
 
     public override void _Ready()
 	{
@@ -31,6 +38,11 @@ public partial class Circle : Node2D
 
 		innerCircle.Centered = true;
 		outerCircle.Centered = true;
+
+        innerCircle.Animation = "default";
+        outerCircle.Animation = "default";
+
+        flareDuration = (float) (flareDurationInBeats * conductor.Song.SPB);
     }
 
 	public override void _Process(double delta)
@@ -39,15 +51,54 @@ public partial class Circle : Node2D
 
         innerCircle.Rotate(rotation);
 		outerCircle.Rotate(-rotation);
-	}
+
+        if (flaring)
+        {
+            currentFlareDuration += (float)delta;
+            if (currentFlareDuration >= flareDuration)
+            {
+                UnFlare();
+            }
+        }
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event.IsActionPressed("button"))
+        {
+            OnButtonPress();
+        }
+    }
+
+    private void OnButtonPress()
+	{
+        innerCircle.Animation = "flare";
+        outerCircle.Animation = "flare";
+
+        innerCircle.Frame = 0;
+        outerCircle.Frame = 0;
+
+        flaring = true;
+        currentFlareDuration = 0;
+    }
+
+    private void UnFlare()
+    {
+        flaring = false;
+
+        innerCircle.Animation = "default";
+        outerCircle.Animation = "default";
+
+        innerCircle.Frame = innerCircleCurrentFrame;
+        outerCircle.Frame = outerCircleCurrentFrame;
+    }
 
 	private void OnBeat()
 	{
-        innerCircleCurrentFrame = innerCircleCurrentFrame < innerCircleAnimationFrames - 1 ? innerCircleCurrentFrame + 1 : 0;
-        outerCircleCurrentFrame = outerCircleCurrentFrame < outerCircleAnimationFrames - 1 ? outerCircleCurrentFrame + 1 : 0;
+        innerCircleCurrentFrame = (innerCircleCurrentFrame + 1) % innerCircleAnimationFrames;
+        outerCircleCurrentFrame = (outerCircleCurrentFrame + 1) % outerCircleAnimationFrames;
 
-		innerCircle.Animation = "default";
-		outerCircle.Animation = "default";
+        if (flaring) return;
 
         innerCircle.Frame = innerCircleCurrentFrame;
         outerCircle.Frame = outerCircleCurrentFrame;
