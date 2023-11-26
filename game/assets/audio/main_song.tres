@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Song" load_steps=16 format=3 uid="uid://c4newkjnpae2"]
 
-[ext_resource type="AudioStream" uid="uid://bjiollm4njk5m" path="res://game/assets/audio/OneButtonBeat_101BPM__0.4.mp3" id="1_b5j4m"]
+[ext_resource type="AudioStream" uid="uid://dgxkjqkmiufxk" path="res://game/assets/audio/RhythmInvoker_101BPM_MUSIC.ogg" id="1_q1bhj"]
 [ext_resource type="Script" path="res://game/scripts/rhythm/Note.cs" id="2_5jnqq"]
 [ext_resource type="Script" path="res://game/scripts/rhythm/Song.cs" id="3_s661o"]
 
@@ -78,7 +78,7 @@ _halfBeat = true
 
 [resource]
 script = ExtResource("3_s661o")
-_audioStream = ExtResource("1_b5j4m")
+_audioStream = ExtResource("1_q1bhj")
 _bpm = 101
 _beatPerMeasure = 4
 _beatsBeforeStart = 4

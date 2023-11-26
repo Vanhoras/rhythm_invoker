@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class Fireball : Node2D
 {
@@ -6,13 +7,17 @@ public partial class Fireball : Node2D
     public delegate void OnFireballMissedEventHandler(int ID);
 
     [Export]
-    private Sprite2D sprite;
+    private AnimatedSprite2D sprite;
 
     [Export]
     private int moveTimeInBeats;
 
     [Export]
     private double beatsTillMissed;
+
+    [Export]
+    private double beatsUntilDisintegrateAfterHit;
+    private double timeUntilDisintegrateAfterHit;
 
     private int _id;
 
@@ -33,9 +38,11 @@ public partial class Fireball : Node2D
     private double timeNeededToMissed;
     private double elapsedTime = 0;
 
-    
+    private bool hit;
+    private double elapsedTimeSinceHit;
 
-	public void Initialize(int id, Conductor conductor, Vector2 circleCenter, float lengthToPerfect, float lengthToMissed)
+
+    public void Initialize(int id, Conductor conductor, Vector2 circleCenter, float lengthToPerfect, float lengthToMissed)
 	{
         this._id = id;
         this.conductor = conductor;
@@ -53,8 +60,12 @@ public partial class Fireball : Node2D
         timeNeededToPerfect = moveTimeInBeats * conductor.Song.SPB;
         timeNeededToMissed = timeNeededToPerfect + beatsTillMissed * conductor.Song.SPB;
 
-        // GD.Print($"Fireball startPosition {startPosition} circleCenter {circleCenter} lengthToPerfect {lengthToPerfect} lengthToMissed {lengthToMissed} perfectPosition {perfectPosition} missedPosition {missedPosition} timeNeededToPerfect {timeNeededToPerfect} timeNeededToMissed {timeNeededToMissed}");
-    }
+        timeUntilDisintegrateAfterHit = beatsUntilDisintegrateAfterHit * conductor.Song.SPB;
+
+        sprite.Frame = 0;
+
+    // GD.Print($"Fireball startPosition {startPosition} circleCenter {circleCenter} lengthToPerfect {lengthToPerfect} lengthToMissed {lengthToMissed} perfectPosition {perfectPosition} missedPosition {missedPosition} timeNeededToPerfect {timeNeededToPerfect} timeNeededToMissed {timeNeededToMissed}");
+}
 
     public override void _PhysicsProcess(double delta)
 	{
@@ -67,7 +78,13 @@ public partial class Fireball : Node2D
             songDelta = delta;
         }
 
-        
+        if (hit)
+        {
+            AnimateAfterHit(songDelta);
+            return;
+        }
+
+
         elapsedTime += songDelta;
 
 		if (elapsedTime <= 0) return;
@@ -113,5 +130,33 @@ public partial class Fireball : Node2D
     {
         EmitSignal(SignalName.OnFireballMissed, ID);
         QueueFree();
+    }
+
+    public void Hit()
+    {
+        hit = true;
+        elapsedTimeSinceHit = 0;
+        sprite.Frame = 1;
+
+        Color newColor = sprite.Modulate;
+
+        newColor.A = 0.7f;
+
+        sprite.Modulate = newColor;
+    }
+
+    private void AnimateAfterHit(double delta)
+    {
+        elapsedTimeSinceHit += delta;
+
+        if (elapsedTimeSinceHit >= timeUntilDisintegrateAfterHit / 2)
+        {
+            sprite.Frame = 2;
+        } 
+        
+        if (elapsedTimeSinceHit >= timeUntilDisintegrateAfterHit)
+        {
+            QueueFree();
+        }
     }
 }

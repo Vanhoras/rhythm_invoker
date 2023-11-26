@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://c4ehbnr7mrglm"]
+
+[ext_resource type="Script" path="res://game/scripts/rhythm/Song.cs" id="1_7tn42"]
+[ext_resource type="AudioStream" uid="uid://bkne6axmu1ile" path="res://game/assets/audio/RhythmInvoker_AMBIENCE.ogg" id="1_vjxgs"]
+
+[resource]
+script = ExtResource("1_7tn42")
+_audioStream = ExtResource("1_vjxgs")
+_bpm = 101
+_beatPerMeasure = 4
+_beatsBeforeStart = 0
+_notes = null

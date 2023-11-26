@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cpdbaebslht08" path="res://game/assets/sprites/bones.png" id="9_cnxfr"]
 [ext_resource type="PackedScene" uid="uid://bm4kv78qclcua" path="res://game/scenes/prefabs/gameplay/circle.tscn" id="9_hgr8o"]
 [ext_resource type="Script" path="res://game/scripts/fireball/FireballManager.cs" id="11_cbg53"]
-[ext_resource type="PackedScene" uid="uid://omf28mlqlnkf" path="res://game/scenes/prefabs/gameplay/fireball_2.tscn" id="12_h1lqj"]
 [ext_resource type="PackedScene" uid="uid://ux41ncvglnf3" path="res://game/scenes/prefabs/gameplay/spawner.tscn" id="13_8vrqy"]
+[ext_resource type="PackedScene" uid="uid://d1f0v65vgkrqg" path="res://game/scenes/prefabs/gameplay/fireball_1.tscn" id="14_buyhf"]
 [ext_resource type="PackedScene" uid="uid://dk16dh1fo4eu" path="res://game/scenes/prefabs/gameplay/hit_notification.tscn" id="14_krehh"]
 [ext_resource type="PackedScene" uid="uid://b2s5e3ctlyiod" path="res://game/scenes/prefabs/gameplay/score_display.tscn" id="16_tritd"]
 [ext_resource type="PackedScene" uid="uid://3c6r11rax0yd" path="res://game/scenes/prefabs/gameplay/torch.tscn" id="17_cgo0e"]
@@ -125,7 +125,7 @@ circle = NodePath("../Circle")
 conductor = NodePath("../conductor")
 hitNotification = NodePath("../HitNotification")
 spawnpoints = [NodePath("../Spawnpoints/Spawnpoint0"), NodePath("../Spawnpoints/Spawnpoint1"), NodePath("../Spawnpoints/Spawnpoint2"), NodePath("../Spawnpoints/Spawnpoint3"), NodePath("../Spawnpoints/Spawnpoint4"), NodePath("../Spawnpoints/Spawnpoint5"), NodePath("../Spawnpoints/Spawnpoint6"), NodePath("../Spawnpoints/Spawnpoint7")]
-fireballPrefab = ExtResource("12_h1lqj")
+fireballPrefab = ExtResource("14_buyhf")
 lengthToPerfect = 185.0
 lengthToMissed = 125.0
 perfectZoneTimeInBeats = 0.25

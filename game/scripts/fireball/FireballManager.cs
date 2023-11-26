@@ -93,7 +93,7 @@ public partial class FireballManager : Node
                 fireballs[closestIndex].Miss();
             } else if (distanceFromPerfect > perfectZoneTime)
             {
-                fireballs[closestIndex].QueueFree();
+                fireballs[closestIndex].Hit();
                 fireballs.Remove(closestIndex);
 
                 hitNotification.ShowHitNotification(HitType.OK);
@@ -101,7 +101,7 @@ public partial class FireballManager : Node
                 EmitSignal(SignalName.OnPerfect);
             } else
             {
-                fireballs[closestIndex].QueueFree();
+                fireballs[closestIndex].Hit();
                 fireballs.Remove(closestIndex);
 
                 hitNotification.ShowHitNotification(HitType.PERFECT);

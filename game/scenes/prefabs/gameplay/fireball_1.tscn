@@ -24,10 +24,13 @@ animations = [{
 
 [node name="Fireball1" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_jl8vk")
-sprite = NodePath("")
+sprite = NodePath("AnimatedSprite2D")
 moveTimeInBeats = 4
 beatsTillMissed = 0.5
+beatsUntilDisintegrateAfterHit = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_aa0g5")
 frame_progress = 0.592469
+speed_scale = 2.0

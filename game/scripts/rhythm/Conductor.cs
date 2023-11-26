@@ -48,7 +48,7 @@ public partial class Conductor : AudioStreamPlayer
 
         this.Finished += SongFinished;
     }
-
+      
     public override void _PhysicsProcess(double delta)
 	{
         if (_timerBeforePlaying)
