@@ -1,6 +1,124 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmtycgdqfr5kj"]
+[gd_scene load_steps=3 format=3 uid="uid://cmtycgdqfr5kj"]
 
 [ext_resource type="Script" path="res://game/scripts/ui/Credits.cs" id="1_22lio"]
+[ext_resource type="FontFile" uid="uid://c6bou33d7457q" path="res://game/assets/fonts/Viking Medium.ttf" id="2_bvggq"]
 
 [node name="credits" type="VBoxContainer"]
+theme_override_constants/separation = 40
 script = ExtResource("1_22lio")
+
+[node name="ProgrammingContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ProgrammingLabel" type="RichTextLabel" parent="ProgrammingContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Programming"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Spacer" type="Control" parent="ProgrammingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="ProgrammerLabel" type="RichTextLabel" parent="ProgrammingContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.956863, 0.368627, 0.596078, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Paul Hielscher"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ArtContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ArtLabel" type="RichTextLabel" parent="ArtContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Art"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Spacer" type="Control" parent="ArtContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="ArtistLabel" type="RichTextLabel" parent="ArtContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.505882, 0.760784, 0.984314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Lou Mondon"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="InstagrammLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.505882, 0.760784, 0.984314, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "https://www.instagram.com/loumondonsketches"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="AudioContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MusicLabel" type="RichTextLabel" parent="AudioContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Audio"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Spacer" type="Control" parent="AudioContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="ComposerLabel" type="RichTextLabel" parent="AudioContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.984314, 0.901961, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_bvggq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Stone Tape Studios"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bvggq")
+theme_override_font_sizes/font_size = 20
+text = "BACK"
+
+[connection signal="pressed" from="BackButton" to="." method="GoBackToMenu"]

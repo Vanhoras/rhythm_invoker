@@ -52,9 +52,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="MainContainer" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("settingsNode", "mainMenuUI") instance=ExtResource("2_0jf05")]
+[node name="MainContainer" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("settingsNode", "creditsNode", "mainMenuUI") instance=ExtResource("2_0jf05")]
 layout_mode = 2
 settingsNode = NodePath("../settings_container")
+creditsNode = NodePath("../credits")
 mainMenuUI = NodePath("../../../..")
 
 [node name="settings_container" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl") instance=ExtResource("3_dellu")]
@@ -62,8 +63,10 @@ visible = false
 layout_mode = 2
 mainMenuControl = NodePath("../MainContainer")
 
-[node name="credits" parent="TextureRect/MainPanelContainer/MainMarginContainer" instance=ExtResource("4_rtxet")]
+[node name="credits" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl") instance=ExtResource("4_rtxet")]
+visible = false
 layout_mode = 2
+mainMenuControl = NodePath("../MainContainer")
 
 [node name="highscore" parent="TextureRect/MainPanelContainer/MainMarginContainer" node_paths=PackedStringArray("mainMenuControl", "mainMenuUI") instance=ExtResource("4_toe0l")]
 visible = false

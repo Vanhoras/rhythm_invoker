@@ -30,6 +30,8 @@ theme_override_constants/separation = 40
 
 [node name="ScoreLabel" type="RichTextLabel" parent="HBoxContainer/labels"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.901961, 0.305882, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_1dvup")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -40,6 +42,8 @@ autowrap_mode = 0
 
 [node name="HighScoreLabel" type="RichTextLabel" parent="HBoxContainer/labels"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.988235, 0.811765, 0.231373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_1dvup")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -55,6 +59,8 @@ theme_override_constants/separation = 40
 
 [node name="ScoreValue" type="RichTextLabel" parent="HBoxContainer/values"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.901961, 0.305882, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_1dvup")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
@@ -65,6 +71,8 @@ autowrap_mode = 0
 
 [node name="HighScoreValue" type="RichTextLabel" parent="HBoxContainer/values"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.988235, 0.811765, 0.231373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_1dvup")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true

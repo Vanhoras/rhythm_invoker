@@ -23,7 +23,7 @@ text = "SETTINGS"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_g56hr")
 theme_override_font_sizes/font_size = 20
-text = "SETTINGS"
+text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 2
@@ -33,5 +33,5 @@ text = "QUIT GAME"
 
 [connection signal="pressed" from="PlayButton" to="." method="PlayGame"]
 [connection signal="pressed" from="SettingsButton" to="." method="OpenSettings"]
-[connection signal="pressed" from="CreditsButton" to="." method="OpenSettings"]
+[connection signal="pressed" from="CreditsButton" to="." method="OpenCredits"]
 [connection signal="pressed" from="QuitButton" to="." method="QuitGame"]

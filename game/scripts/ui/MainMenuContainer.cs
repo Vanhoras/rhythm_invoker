@@ -5,7 +5,10 @@ public partial class MainMenuContainer : Control
 	[Export]
 	private Control settingsNode;
 
-	[Export]
+    [Export]
+    private Control creditsNode;
+
+    [Export]
 	private MainMenuUI mainMenuUI;
 
 	public void QuitGame()
@@ -18,6 +21,12 @@ public partial class MainMenuContainer : Control
         settingsNode.Show();
 		Hide();
     }
+
+	public void OpenCredits()
+	{
+		creditsNode.Show();
+		Hide();
+	}
 
 	public void PlayGame()
 	{
