@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>ButtonGameJam</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="game\scripts\enums\" />
+  </ItemGroup>
 </Project>

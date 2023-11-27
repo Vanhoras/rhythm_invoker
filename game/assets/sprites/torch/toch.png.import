@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/toch.png-4666f52c1a16609a78549e95d00fbdc2.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

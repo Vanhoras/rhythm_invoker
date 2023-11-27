@@ -9,4 +9,4 @@ _audioStream = ExtResource("1_f8pl3")
 _bpm = 101
 _beatPerMeasure = 4
 _beatsBeforeStart = 0
-_notes = Array[Object]([])
+Notes = null

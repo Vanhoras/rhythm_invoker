@@ -201,7 +201,7 @@ public partial class Conductor : AudioStreamPlayer
         }
 
 
-        for (int i = 24; i <= 384; i+=4)
+        for (int i = 24; i <= 408; i+=4)
         {
             Note note1 = new Note ();
             note1.Initialize(4, i, false);
@@ -216,7 +216,7 @@ public partial class Conductor : AudioStreamPlayer
         
 
         int j = 12;
-        while (j < 383)
+        while (j < 408)
         {
             random.Randomize();
             j += random.RandiRange(1, 8);
